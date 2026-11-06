@@ -1,0 +1,1050 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>KaiMobil – Huonekalujen pesu, siivous ja vuokraus | Kajaani, Kainuu</title>
+<meta name="description" content="Sohvien, nojatuolien ja patjojen syväpesu kotonasi, pesulaitteen vuokraus ja kotisiivous Kajaanissa ja koko Kainuussa. Hinta heti netissä, varaus WhatsAppilla.">
+<link rel="canonical" href="https://kaimobil.fi/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="KaiMobil – Huonekalujen pesu ja vuokraus Kainuussa">
+<meta property="og:description" content="Syväpesu neljällä kierroksella, laitevuokraus ja kotisiivous. Kajaani, Sotkamo, Paltamo.">
+<meta property="og:locale" content="fi_FI"><meta property="og:locale:alternate" content="en_GB"><meta property="og:locale:alternate" content="ru_RU">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"KaiMobil","url":"https://kaimobil.fi/","description":"Huonekalujen pesu, pesulaitteiden vuokraus ja kotisiivous Kainuussa.","areaServed":[{"@type":"City","name":"Kajaani"},{"@type":"City","name":"Sotkamo"},{"@type":"City","name":"Paltamo"},{"@type":"AdministrativeArea","name":"Kainuu"}],"knowsLanguage":["fi","en","ru"],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Palvelut","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Huonekalujen pesu"},"priceCurrency":"EUR","price":"89"},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Tekstiilipesurin vuokraus"},"priceCurrency":"EUR","price":"35"}]}}</script>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700&family=Onest:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+<style>
+/* Layout: hero with rotating city + slogan -> "what do you need" grid: 3 live service tiles (each its own 3D scene, expands to full width) + one slot split into 2 locked "coming soon" tiles */
+:root{
+  --bg:#07111C; --bg2:#0C1A29; --panel:#0F2133; --line:#1E3349; --fg:#EAF2FA; --muted:#8EA3B8;
+  --blue:#2E8BFF; --ice:#6FD8FF; --ok:#3CCB91;
+  --display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --body:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html{overflow-x:hidden}
+body{overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+button,a{touch-action:manipulation}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55;margin:0}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.015em}
+p{margin:0}
+.in{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.label,.tag{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ice);font-weight:600}
+.muted{color:var(--muted)}
+.top{display:flex;justify-content:flex-end;padding-block:16px 0}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px}
+.lang button{border:0;background:none;color:var(--muted);font:600 12px var(--body);padding:6px 11px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+button:focus-visible,a:focus-visible{outline:2px solid var(--ice);outline-offset:2px}
+
+/* hero */
+.hero{position:relative;padding-block:28px 56px;display:grid;gap:14px}
+.hero::before{content:"";position:absolute;inset:-40px 12% auto 0;height:420px;background:radial-gradient(40% 60% at 25% 40%,rgba(46,139,255,.22),transparent 70%),radial-gradient(30% 50% at 70% 30%,rgba(111,216,255,.12),transparent 70%);z-index:-1;animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(4%,3%) scale(1.05)}}
+.mark{display:flex;align-items:center;gap:clamp(12px,2vw,20px)}
+.mark svg{width:clamp(48px,8vw,84px);height:auto;flex-shrink:0}
+.mark h1{font-size:clamp(40px,9vw,104px);line-height:.95;letter-spacing:-.035em}
+.mark h1 span{color:var(--blue)}
+.rot{display:inline-grid;overflow:hidden;vertical-align:bottom}
+.rot span{grid-area:1/1;white-space:nowrap;transform:translateY(70%);opacity:0;transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .5s}
+.rot span.on{transform:none;opacity:1}
+.rot span.out{transform:translateY(-70%);opacity:0}
+.city{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:clamp(22px,4.4vw,42px);color:var(--ice);line-height:1.2}
+.city svg{width:.8em;height:.8em;flex-shrink:0}
+.slogan{font-family:var(--display);font-size:clamp(26px,5.6vw,60px);line-height:1.15;font-weight:700}
+.sub{color:var(--muted);font-size:17px;max-width:46ch}
+
+/* grid */
+.need{display:grid;gap:18px;padding-bottom:40px}
+.need h2{font-size:clamp(24px,4.2vw,40px)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:720px){.grid{grid-template-columns:1fr}}
+.tile{position:relative;border-radius:22px;overflow:hidden;background:var(--panel);border:1px solid var(--line);display:flex;flex-direction:column;transition:border-color .25s,box-shadow .25s}
+.tile:not(.open):not(.locked):hover{border-color:#2f5478;box-shadow:0 10px 40px -18px rgba(46,139,255,.5)}
+.view{position:relative;height:250px;flex-shrink:0;background:radial-gradient(80% 70% at 40% 20%,rgba(46,139,255,.14),transparent 60%),linear-gradient(var(--bg2),var(--bg));transition:height .5s cubic-bezier(.2,.8,.2,1)}
+.view canvas{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .45s ease}
+.view canvas.on{opacity:1}
+.view canvas.on.fade{opacity:0}
+.chip:empty{display:none}
+.chip{position:absolute;left:12px;top:12px;font-size:12px;font-weight:600;background:rgba(7,17,28,.72);border:1px solid var(--line);border-radius:999px;padding:4px 10px;backdrop-filter:blur(6px)}
+.meta{padding:14px 18px 18px;display:grid;gap:4px}
+.meta .row1{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.meta h3{font-size:20px;line-height:1.2}
+.meta .d{color:var(--muted);font-size:14.5px}
+.meta .from{font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+.season{color:var(--muted);font-size:12px}
+.season:empty{display:none}
+.desc{display:none;margin:0;padding:0 18px 4px;color:var(--muted);max-width:68ch;font-size:15.5px}
+.tile.open .desc{display:block}
+@media (max-width:720px){.desc{padding:0 14px 4px}}
+.opener{position:absolute;inset:0;z-index:3;background:none;border:0;cursor:pointer;border-radius:22px}
+.hud,.x,.detail{display:none}
+.tile.open{grid-column:1/-1}
+.tile.open .opener,.tile.open .chip{display:none}
+.tile.open .view{height:min(70vh,620px);height:min(70svh,620px)}
+.tile.open .hud{display:grid}
+.tile.open .x{display:grid}
+.tile.open .detail{display:grid}
+.hud{position:absolute;left:0;right:0;bottom:0;padding:16px 16px 12px;background:linear-gradient(transparent,rgba(7,17,28,.92) 40%);gap:10px}
+.cap{display:grid;gap:4px;max-width:560px}
+.cap .num{font-family:var(--display);font-size:12px;color:var(--ice);letter-spacing:.08em;font-variant-numeric:tabular-nums}
+.cap h4{font-family:var(--display);font-size:clamp(18px,3vw,28px);margin:0;line-height:1.15}
+.cap p{color:var(--muted);font-size:14.5px}
+.ctl{display:flex;gap:10px;align-items:center}
+.seg{flex:1;display:flex;gap:4px}
+.seg button{flex:1;border:0;background:none;padding:10px 0;cursor:pointer}
+.seg i{display:block;height:4px;border-radius:2px;background:rgba(234,242,250,.15);overflow:hidden}
+.seg b{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--ice))}
+.cb,.x{width:38px;height:38px;flex-shrink:0;border-radius:50%;border:1px solid var(--line);background:rgba(7,17,28,.7);color:var(--fg);cursor:pointer;font-size:14px;place-items:center}
+.x{position:absolute;top:12px;right:12px;z-index:4;font-size:18px}
+.detail{grid-template-columns:1.1fr 1fr;gap:28px;padding:6px 18px 22px}
+@media (max-width:720px){.detail{grid-template-columns:1fr;gap:18px}}
+.steps{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:2px;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:center;padding:6px 8px;border-radius:10px;color:var(--muted);cursor:pointer;font-size:14.5px}
+.steps li::before{content:counter(s);width:26px;height:26px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font:600 11px var(--display)}
+.steps li.on{color:var(--fg);background:rgba(46,139,255,.1)}
+.steps li.on::before{border-color:var(--ice);color:var(--ice)}
+.steps li.done::before{border-color:var(--blue);background:var(--blue);color:#fff}
+.info{display:grid;gap:14px;align-content:start}
+.info p{color:var(--muted)}
+.info .price{font-family:var(--display);font-size:26px}
+.btns{display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:transparent;color:var(--fg);font:600 14px var(--body);padding:11px 15px;border-radius:11px;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.pri{background:var(--blue);border-color:var(--blue);color:#fff}
+.vtabs{position:absolute;left:12px;top:12px;z-index:5;display:none;border:1px solid var(--line);border-radius:999px;padding:3px;background:rgba(7,17,28,.75);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.tile.open .vtabs{display:flex}
+.vt{border:0;background:none;color:var(--muted);font:600 12.5px var(--body);padding:8px 13px;border-radius:999px;cursor:pointer;min-height:36px}
+.vt[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.ba{position:absolute;inset:0;z-index:4;overflow:hidden;background:#0b1622;touch-action:pan-y}
+.ba[hidden]{display:none}
+.tile.photo .hud{display:none}
+.bimg{position:absolute;inset:0}
+.bimg.bef{background:radial-gradient(18% 22% at 30% 45%,rgba(105,72,38,.75),transparent 70%),radial-gradient(12% 15% at 64% 62%,rgba(105,72,38,.6),transparent 70%),radial-gradient(26% 18% at 55% 30%,rgba(120,90,55,.45),transparent 70%),repeating-linear-gradient(0deg,rgba(255,255,255,.05) 0 2px,transparent 2px 4px),repeating-linear-gradient(90deg,rgba(0,0,0,.06) 0 2px,transparent 2px 4px),linear-gradient(160deg,#9c9686,#7e7a6e)}
+.bimg.aft{background:repeating-linear-gradient(0deg,rgba(255,255,255,.07) 0 2px,transparent 2px 4px),repeating-linear-gradient(90deg,rgba(0,0,0,.05) 0 2px,transparent 2px 4px),linear-gradient(160deg,#c9d3dc,#a9b6c2);clip-path:inset(0 0 0 50%)}
+.bline{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;transform:translateX(-1px);pointer-events:none}
+.bline span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:#fff;color:#0b1622;display:grid;place-items:center;font-weight:700;box-shadow:0 4px 20px rgba(0,0,0,.4)}
+.bl{position:absolute;bottom:14px;font:600 12px var(--body);letter-spacing:.14em;text-transform:uppercase;background:rgba(7,17,28,.75);padding:5px 10px;border-radius:999px;pointer-events:none}
+.bl1{left:14px}.bl2{right:14px}
+.bnote{position:absolute;left:50%;top:64px;transform:translateX(-50%);margin:0;font-size:12.5px;color:#eaf2fa;background:rgba(7,17,28,.7);padding:6px 12px;border-radius:999px;white-space:nowrap;pointer-events:none;max-width:calc(100% - 24px);overflow:hidden;text-overflow:ellipsis}
+.ba input[type=range]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;-webkit-appearance:none;appearance:none}
+.nogl{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);padding:20px;text-align:center;font-size:14px}
+
+
+/* constructor inside an open tile */
+.cfgx{display:none;padding:4px 18px 24px;gap:12px;max-width:780px}
+.tile.open .cfgx{display:grid}
+.cfgx h3{font-size:clamp(20px,3vw,28px);margin-top:10px}
+.who{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.who button{border:1.5px solid var(--line);background:var(--bg2);color:var(--fg);border-radius:14px;padding:15px 12px;font:600 15px var(--body);cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:3px}
+.who button small{font-weight:400;font-size:12.5px;color:var(--muted)}
+.who button[aria-pressed="true"]{border-color:var(--blue);background:rgba(46,139,255,.12)}
+.who button.blink{animation:blink 1.6s ease-in-out infinite}
+@keyframes blink{0%,100%{box-shadow:0 0 0 0 transparent}50%{box-shadow:0 0 0 5px rgba(111,216,255,.35);border-color:var(--ice)}}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:14px}
+.r{display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.r:last-child{border-bottom:0}
+label.r{cursor:pointer}
+.r .txt{flex:1;min-width:0}.r .t{font-weight:600}.r .dd{font-size:12.5px;color:var(--muted)}
+.pr{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap;text-align:right;min-width:62px}
+.pr s{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.pr .pd{display:block;font-weight:400;font-size:12px;color:var(--muted)}
+.inc{color:var(--ok);font-size:12px;font-weight:600}
+.cfgx input[type=checkbox],.cfgx input[type=radio]{width:20px;height:20px;accent-color:var(--blue);flex-shrink:0}
+.stp{display:flex;align-items:center;gap:6px}
+.stp button{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);font-size:17px;cursor:pointer}
+.stp output{width:20px;text-align:center;font-variant-numeric:tabular-nums;font-weight:700}
+.note{font-size:12.5px;color:var(--muted)}
+.warn{font-size:12.5px;color:#F5B83D}
+.testbtn{border:1.5px dashed var(--ice);background:transparent;color:var(--fg);border-radius:14px;padding:13px 14px;font:600 14px var(--body);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left}
+.testbtn[aria-pressed="true"]{background:rgba(111,216,255,.1);border-style:solid}
+.testbtn em{font-style:normal;font-size:12px;color:var(--muted);font-weight:400;display:block}
+.terms{padding:14px;display:grid;gap:8px;font-size:13.5px}.terms ul{margin:0;padding-left:18px;display:grid;gap:4px}
+.drop{animation:drop .55s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes drop{from{transform:translateY(-14px);opacity:0}to{transform:none;opacity:1}}
+.tot{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:16px;border-radius:14px;background:linear-gradient(120deg,#0f2a48,#0b1d30);border:1px solid #22456b;position:sticky;bottom:10px;z-index:2}
+.tot.hide{display:none}
+.tot .pn{display:block;font-size:12px;color:var(--muted);max-width:42ch;margin-top:4px;line-height:1.4}
+.tot b{display:block;font-family:var(--display);font-size:26px;font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){.who button.blink,.drop{animation:none}}
+.tile.feat{grid-column:1/-1}
+.tile.feat:not(.open) .view{height:340px}
+.tile.locked .opener{display:none}
+.view .snap{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.tile.locked .view .snap,.tile.locked .view canvas{filter:grayscale(1) brightness(.42) contrast(.9)}
+.tile.locked .view::after{content:"";position:absolute;inset:0;background:rgba(10,16,24,.35);pointer-events:none}
+.tile.locked .chip,.tile.locked .lockb{display:none}
+.lockbig{position:absolute;inset:0;z-index:2;display:grid;place-content:center;justify-items:center;gap:10px;pointer-events:none}
+.lockbig i{width:92px;height:92px;border-radius:50%;display:grid;place-items:center;background:rgba(7,17,28,.7);border:1.5px solid #3a5470;box-shadow:0 10px 40px rgba(0,0,0,.45)}
+.lockbig svg{width:44px;height:44px;color:#c9d6e2}
+.tile.locked h3{color:#c3d0dc}
+.lockb{position:absolute;right:12px;top:12px;z-index:2;display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;background:rgba(7,17,28,.78);border:1px solid #2a4560;border-radius:999px;padding:5px 11px 5px 8px;backdrop-filter:blur(6px)}
+.lockb svg{width:15px;height:15px;color:var(--ice)}
+.tile.locked .from{color:var(--muted);font-weight:500}
+/* phones and tablets */
+@media (max-width:720px){
+  .hero{padding-block:18px 36px;gap:10px}
+  .need{gap:14px}
+  .grid{gap:12px}
+  .view{height:210px}
+  .tile.feat:not(.open) .view{height:260px}
+  .tile.open .view{height:min(64vh,540px);height:min(64svh,540px)}
+  .tile,.opener{border-radius:18px}
+  .meta{padding:12px 14px 16px}
+  .meta h3{font-size:18px}
+  .hud{padding:12px 12px 10px;gap:8px}
+  .cap h4{font-size:18px}.cap p{font-size:13.5px}
+  .detail{padding:4px 14px 18px}
+  .cfgx{padding:4px 14px 20px}
+  .who{gap:8px}.who button{padding:12px 10px;font-size:14.5px}
+  .r{padding:11px 12px;gap:10px}
+  .pr{min-width:54px}
+  .lockbig i{width:76px;height:76px}.lockbig svg{width:36px;height:36px}
+}
+@media (pointer:coarse){.cb,.x{width:44px;height:44px}.stp button{width:38px;height:38px}.seg button{padding:14px 0}}
+.tot{bottom:calc(10px + env(safe-area-inset-bottom,0px))}
+.chip,.lockb{-webkit-backdrop-filter:blur(6px)}
+/* coming soon */
+.soon{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.s{position:relative;border-radius:22px;border:1px dashed #2a4560;padding:18px;display:flex;flex-direction:column;gap:8px;min-height:200px;overflow:hidden;background:repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 12px,transparent 12px 24px),var(--bg2)}
+.s::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(111,216,255,.07) 50%,transparent 70%);transform:translateX(-100%);animation:shine 5s ease-in-out infinite}
+.s:nth-child(2)::after{animation-delay:2.5s}
+@keyframes shine{60%,100%{transform:translateX(100%)}}
+.s svg{width:26px;height:26px;color:var(--muted)}
+.s h3{font-size:16px;line-height:1.25;color:#c3d1de}
+.s p{font-size:13px;color:var(--muted);flex:1}
+.s .btn{font-size:12.5px;padding:8px 11px;align-self:flex-start;position:relative;z-index:1}
+.kv{padding-block:48px 24px;border-top:1px solid var(--line);display:grid;gap:12px}
+.kv h2{font-size:clamp(22px,3.6vw,32px)}
+.kvd{max-width:62ch}
+.kvgrid{display:grid;grid-template-columns:1fr 1.2fr;gap:14px;margin-top:6px}
+@media (max-width:760px){.kvgrid{grid-template-columns:1fr}}
+.kvlist{padding:16px;display:grid;gap:14px;align-content:start}
+.kvlist h4{margin:0 0 6px;font:600 13px var(--body);letter-spacing:.12em;text-transform:uppercase}
+.kvok h4{color:var(--ok)}.kvno h4{color:#F5B83D}
+.kvlist ul{margin:0;padding:0;list-style:none;display:grid;gap:6px;font-size:14.5px}
+.kvlist li{display:flex;gap:8px}
+.kvcalc{padding:16px;display:grid;gap:14px}
+.kvf{display:grid;gap:6px;font-weight:600;font-size:14.5px}
+.kvf small{font-weight:400;color:var(--muted);font-size:12.5px}
+.kvin{display:flex;align-items:center;gap:8px;font-weight:600}
+.kvin input{width:140px;font:600 16px var(--body);color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.kvres{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px;border-radius:12px;background:linear-gradient(120deg,#0f2a48,#0b1d30);border:1px solid #22456b}
+.kvres b{display:block;font-family:var(--display);font-size:24px;font-variant-numeric:tabular-nums}
+.kvl{display:inline-block;margin-top:6px;font-size:12.5px;color:var(--ice)}
+.social{padding-block:48px 28px;border-top:1px solid var(--line);display:grid;justify-items:center;text-align:center;gap:12px}
+.social h2{font-size:clamp(22px,3.6vw,32px)}
+.social .muted{max-width:44ch}
+.soc{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.sb{display:inline-flex;align-items:center;gap:9px;min-height:46px;padding:11px 18px}
+.sb svg{width:20px;height:20px}
+.social .ask{margin-top:14px}
+.foot{padding-block:10px 40px;color:var(--muted);font-size:12px;text-align:center}
+@media (prefers-reduced-motion:reduce){.hero::before,.s::after{animation:none}.rot span,.view{transition:none}}
+</style>
+
+<div class="in top">
+  <div class="lang" role="group" aria-label="Kieli / Language / Язык">
+    <button data-l="fi" aria-pressed="true">FI</button><button data-l="en" aria-pressed="false">EN</button><button data-l="ru" aria-pressed="false">RU</button>
+  </div>
+</div>
+
+<section class="in hero">
+  <div class="mark">
+    <svg viewBox="0 0 52 52" aria-hidden="true"><rect width="52" height="52" rx="12" fill="#2E8BFF"/><path d="M16 12V40M16 26L30 12M16 26L30 40" stroke="#fff" stroke-width="4" stroke-linecap="round"/><path d="M32 19L39 26L32 33" stroke="#7FE0FF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+    <h1>Kai<span>Mobil</span></h1>
+  </div>
+  <div class="city"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><span class="rot" id="cities"></span></div>
+  <div class="slogan rot" id="slogans"></div>
+  <p class="sub" data-i="sub"></p>
+</section>
+
+<section class="in need">
+  <h2 data-i="q"></h2>
+  <div class="grid" id="grid"></div>
+</section>
+<section class="in kv" id="kv">
+  <span class="label" data-kv="kvL"></span>
+  <h2 data-kv="kvT"></h2>
+  <p class="muted kvd" data-kv="kvD"></p>
+  <div class="kvgrid">
+    <div class="card kvlist"><div class="kvok"></div><div class="kvno"></div></div>
+    <div class="card kvcalc">
+      <label class="kvf"><span data-kv="workL"></span><span class="kvin"><input type="number" inputmode="decimal" min="0" step="5" id="kvW" value="250"> €</span><small data-kv="workD"></small></label>
+      <label class="kvf"><span data-kv="otherL"></span><span class="kvin"><input type="number" inputmode="decimal" min="0" step="50" id="kvO" value="300"> €</span><small data-kv="otherD"></small></label>
+      <div class="kvf"><span data-kv="persL"></span><div class="who kvp"><button data-p="1" aria-pressed="true"></button><button data-p="2" aria-pressed="false"></button></div></div>
+      <div class="kvres"><div><span class="label" data-kv="resL"></span><b id="kvR">0 €</b></div><div><span class="label" data-kv="netL"></span><b id="kvN">0 €</b></div></div>
+      <p class="note" id="kvH"></p>
+    </div>
+  </div>
+  <p class="note" data-kv="disc"></p>
+</section>
+<section class="in social">
+  <h2 data-i="ourWork"></h2>
+  <p class="muted" data-i="ourWorkD"></p>
+  <div class="soc">
+    <a class="btn sb" id="fb" href="https://www.facebook.com/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H8v3h2.6V21h2.9z"/></svg>Facebook</a>
+    <a class="btn sb" id="ig" href="https://www.instagram.com/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a>
+  </div>
+  <p class="muted ask" data-i="askT"></p>
+  <a class="btn pri sb" id="wa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3zm0 16.3c-1.4 0-2.8-.4-4-1.1l-.3-.2-2.7.7.7-2.6-.2-.3A7.3 7.3 0 1 1 12 19.3zm4-5.4c-.2-.1-1.3-.7-1.5-.7s-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6 6 0 0 1-3-2.6c-.2-.4.2-.4.7-1.2.1-.1 0-.3 0-.4l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.4c-.2 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2.9 2.4c.1.1 1.6 2.5 4 3.5 1.5.6 2 .7 2.8.6.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1l-.6-.3z"/></svg>WhatsApp</a>
+</section>
+<p class="in foot">KaiMobil · Kainuu · Y-tunnus 0000000-0</p>
+
+<script>
+/* ================= texts ================= */
+const WA="358400000000",STORY="https://claude.ai/artifact/1Bso9tACNevrpCemtuprhd";
+const T={
+fi:{sub:"Kodin ja auton hoito – tuodaan luoksesi.",q:"Mitä tarvitset?",tabPh:"Ennen / jälkeen",bef:"Ennen",aft:"Jälkeen",phNote:"Kuvat tulossa – oikeat työmme",ourWork:"Työmme",ourWorkD:"Ajankohtaiset työt, ennen/jälkeen-kuvat ja videot löydät somestamme.",askT:"Kysyttävää? Kirjoita meille.",cities:["Kainuu","Kajaani","Sotkamo","Paltamo"],slogans:["Vuokraa.","Ansaitse.","Palvelu."],
+ cat:{home:"Koti",car:"Auto",both:"Koti · Auto"},from:"alk.",step:"Vaihe",stepsL:"Näin se tehdään",book:"Varaa WhatsAppilla",more:"Hinnat ja vuokraus",close:"Sulje",openA:"Avaa",
+ closedA:"Ei vielä saatavilla",notify:"Ilmoita, kun avautuu",notifyMsg:"ilmoittakaa, kun palvelu avautuu:",draft:"luonnos, hinnat esimerkkejä",nogl:"3D ei latautunut tällä laitteella.",
+ svc:{
+  sofa:{t:"Huonekalujen pesu",desc:"Syväpesemme sohvat, nojatuolit ja patjat ammattilaitteella neljällä kierroksella: lika, syvempi lika, huuhtelu ja kuivaus. Kangas kuivuu muutamassa tunnissa. Voit myös vuokrata saman laitteen ja pestä itse.",d:"Sohvat, nojatuolit ja patjat – syväpesu neljällä kierroksella.",season:"",
+   info:"Tulemme kotiin laitteiden ja aineiden kanssa. Kangas kuivuu muutamassa tunnissa. Voit myös vuokrata laitteen ja pestä itse.",
+   ph:[["Esikäsittely","Pol Star tahroille – neutraali pH, turvallinen kankaalle."],["Harjaus","Porakoneen harja vie aineen kuituun ja irrottaa lian."],["1. kierros – lika ulos","Suulake ruiskuttaa ja imee heti takaisin. Säiliöön ruskeaa vettä."],["2. kierros – syvempi lika","Toinen kierros nostaa loput. Vesi vaalenee."],["3. kierros – huuhtelu","Puhdas vesi vie pesuainejäämät, ettei kangas jää tahmeaksi."],["4. kierros – kuivaus","Imu ilman vettä – kangas kuivuu tunneissa."],["Valmis","Vasemmalla pesty, oikealla sama sohva ennen."]]},
+  car:{t:"Auton sisäpesu",desc:"Puhdistamme auton sisätilat kotipihallasi: penkit ja verhoilut, nahan, muovipinnat, kojelaudan, ovet, kahvat ja käsinojat, lattian ja matot sekä ikkunat sisältä. Katon ja tavaratilan pesu lisäpalveluna. Tarvitsemme vain sähköpistokkeen. Tai vuokraa laite ja pese itse.",d:"Penkit, nahka, muovit, lattia ja matot. Katto ja tavaratila lisäpalveluna.",season:"Kesällä, väh. +15 °C",
+   info:"Teemme pihallasi, tarvitsemme vain sähköpistokkeen. Auto on ajokunnossa samana päivänä.",
+   ph:[["Imurointi","Matot, lattia ja penkit – hiekka ja murut pois."],["Esikäsittely","Pol Star tahroille – turvallinen kankaalle ja nahalle."],["Harjaus","Harja irrottaa lian kuidun syvyydeltä."],["Imupesu","Suulake ruiskuttaa ja imee heti takaisin."],["Huuhtelu","Puhdas vesi vie pesuainejäämät – penkki ei jää tahmeaksi."],["Kuivaus","Imu ilman vettä. Kosteus pois."],["Muovit ja yksityiskohdat","Ovet, kahvat, käsinojat ja konsoli – puhdistusaine ja mikrokuitu."],["Valmis","Vasemmalla puhdas, oikealla sama auto ennen."]]},
+  tire:{t:"Renkaanvaihto kotipihalla",desc:"Haemme renkaat varastosta, kellarista tai autotallista, kannamme ne auton luo ja vaihdamme pihallasi – sinun ei tarvitse nostaa mitään raskasta. Kiristys momenttiavaimella ja paineiden tarkistus. Tai vuokraa työkalut ja vaihda itse.",d:"Vaihdamme renkaat siellä, missä autosi on.",season:"Keväällä ja syksyllä",
+   info:"Vaihdamme vanteille asennetut renkaat, kiristämme momenttiavaimella ja tarkistamme paineet. Tasapainotusta ei tehdä paikan päällä.",
+   ph:[["Mutterit auki","Löysätään, kun pyörä on vielä maassa."],["Nosto","Tunkki oikeaan nostokohtaan, auto ylös."],["Mutterit pois","Mutterit magneettikuppiin – yksikään ei katoa."],["Vanha pyörä pois","Samalla katsomme jarrulevyn ja navan."],["Uusi pyörä paikalleen","Kesä- tai talvipyörä navalle."],["Ristiin","Mutterit kierretään ristiin, jotta vanne istuu tasaisesti."],["Momenttiavain","Auto alas ja jokainen mutteri oikeaan momenttiin."],["Valmis","Paineet tarkistettu, vanhat renkaat pusseihin."]]},
+  clean:{t:"Kotisiivous",desc:"Siivoamme asunnot ja talot – myös juhlien jälkeen. Hinta määräytyy tuntien mukaan: lähetä kuvat WhatsAppissa, niin arvioimme ajan. Tuomme välineet ja aineet mukanamme.",d:"Imurointi, moppaus ja kiilto – koti valmiiksi.",season:"",info:"Tuomme välineet ja aineet. Hinta asunnon koon mukaan, kotitalousvähennys koskee työtä.",ph:[["Imurointi","Pöly ja murut pois lattialta."],["Moppaus","Kostea moppi ja oikea aine irrottavat lian."],["Kuivaus","Lattia kuivuu ilman raitoja."],["Valmis","Puhdas ja raikas koti."]]},
+  ozone:{t:"Otsonaattorin vuokraus",desc:"Vuokraamme ammattiotsonaattorin: se poistaa tupakan, lemmikkien, homeen ja palaneen hajun asunnosta tai autosta. Tuomme ja haemme laitteen. Käsittelyn ajan tilassa ei saa olla ihmisiä, eläimiä eikä kasveja.",d:"Tupakan, lemmikkien ja homeen haju pois – koti tai auto.",season:"",info:"Ammattiotsonaattori poistaa hajut, ei peitä niitä. Käsittelyn ajan tilassa ei saa olla ihmisiä, eläimiä eikä kasveja.",ph:[["Laite tilaan","Otsonaattori paikalleen. Ihmiset ja eläimet ulos."],["Otsoni täyttää tilan","Otsoni leviää kaikkialle, myös tekstiileihin."],["Haju hajoaa","Otsoni hajottaa hajumolekyylit – ei peitä niitä."],["Tuuletus","Ikkunat auki, otsoni muuttuu takaisin hapeksi."],["Valmis","Raikas ilma ilman hajusteita."]]}},
+ soon:{clean:{t:"Kotisiivous",d:"Säännöllinen tai kertasiivous."},air:{t:"Ilmanpuhdistus",d:"Hajut ja pöly pois sisäilmasta."}}},
+en:{sub:"Home and car care – brought to you.",q:"What do you need?",tabPh:"Before / after",bef:"Before",aft:"After",phNote:"Placeholder – real photos soon",ourWork:"Our work",ourWorkD:"Current jobs, before/after photos and videos are on our social media.",askT:"Questions? Message us.",cities:["Kainuu","Kajaani","Sotkamo","Paltamo"],slogans:["Rent it.","Earn with it.","Service."],
+ cat:{home:"Home",car:"Car",both:"Home · Car"},from:"from",step:"Step",stepsL:"How it's done",book:"Book on WhatsApp",more:"Prices and rental",close:"Close",openA:"Open",
+ closedA:"Not available yet",notify:"Tell me when it opens",notifyMsg:"tell me when this service opens:",draft:"draft, example prices",nogl:"3D could not load on this device.",
+ svc:{
+  sofa:{t:"Furniture cleaning",desc:"We deep-clean sofas, armchairs and mattresses with a professional machine in four passes: dirt, deeper dirt, rinse and drying. Fabric dries in a few hours. You can also rent the same machine and do it yourself.",d:"Sofas, armchairs and mattresses – deep clean in four passes.",season:"",
+   info:"We come to your home with the machine and chemicals. Fabric dries in a few hours. Or rent the machine and do it yourself.",
+   ph:[["Pre-treatment","Pol Star on the stains – neutral pH, safe for fabric."],["Agitation","A drill brush drives the cleaner in and loosens the dirt."],["Pass 1 – dirt out","The nozzle sprays and sucks straight back. Brown water in the tank."],["Pass 2 – deeper dirt","The second pass lifts the rest. The water gets lighter."],["Pass 3 – rinse","Clean water removes detergent so the fabric isn't sticky."],["Pass 4 – drying","Suction without water – the fabric dries in hours."],["Done","Left: cleaned. Right: the same sofa before."]]},
+  car:{t:"Car interior cleaning",desc:"We clean your car interior in your driveway: seats and upholstery, leather, plastic surfaces, dashboard, doors, handles and armrests, floor and mats, and the inside of the windows. Headliner and boot cleaning available as extras. We only need a power socket. Or rent the machine and do it yourself.",d:"Seats, leather, plastics, floor and mats. Headliner and boot as extras.",season:"Summer, min. +15 °C",
+   info:"We work in your driveway; we only need a power socket. The car is ready to drive the same day.",
+   ph:[["Vacuuming","Mats, floor and seats – sand and crumbs out."],["Pre-treatment","Pol Star on the stains – safe for fabric and leather."],["Agitation","A brush loosens dirt deep in the fibres."],["Extraction","The nozzle sprays and sucks straight back."],["Rinse","Clean water removes detergent – the seat won't feel sticky."],["Drying","Suction without water. Moisture out."],["Plastics and details","Doors, handles, armrests and console – cleaner and microfibre."],["Done","Left: clean. Right: the same car before."]]},
+  tire:{t:"Tyre change at home",desc:"We fetch your tyres from storage, the basement or the garage, carry them to the car and change them in your driveway – you don't have to lift anything heavy. Torque-wrench tightening and a pressure check. Or rent the tools and do it yourself.",d:"We change your tyres where your car is parked.",season:"Spring and autumn",
+   info:"We swap wheels already mounted on rims, tighten with a torque wrench and check the pressure. No balancing on site.",
+   ph:[["Loosen the nuts","Loosened while the wheel is still on the ground."],["Lift","Jack at the right lifting point, car up."],["Nuts off","Nuts go into a magnetic bowl – none get lost."],["Old wheel off","We also check the brake disc and hub."],["New wheel on","Summer or winter wheel onto the hub."],["Star pattern","Nuts go on in a star pattern so the rim seats evenly."],["Torque wrench","Car down, every nut to the right torque."],["Done","Pressure checked, old tyres into bags."]]},
+  clean:{t:"Home cleaning",desc:"We clean flats and houses – after parties too. The price is by the hour: send photos on WhatsApp and we'll estimate the time. We bring our own equipment and products.",d:"Vacuuming, mopping and shine – your home ready.",season:"",info:"We bring the equipment and products. Price by home size; the household tax credit applies to labour.",ph:[["Vacuuming","Dust and crumbs off the floor."],["Mopping","A damp mop and the right product lift the dirt."],["Drying","The floor dries without streaks."],["Done","A clean, fresh home."]]},
+  ozone:{t:"Ozone generator rental",desc:"We rent out a professional ozone generator: it removes smoke, pet, mould and burnt smells from a home or a car. We deliver and collect it. No people, pets or plants inside during treatment.",d:"Smoke, pet and mould odours gone – home or car.",season:"",info:"A professional ozone generator removes odours instead of masking them. No people, pets or plants inside during treatment.",ph:[["Device in place","Ozone generator in. People and pets out."],["Ozone fills the room","Ozone spreads everywhere, into fabrics too."],["Odour breaks down","Ozone destroys odour molecules – it doesn't mask them."],["Airing","Windows open, ozone turns back into oxygen."],["Done","Fresh air without fragrances."]]}},
+ soon:{clean:{t:"Home cleaning",d:"Regular or one-off cleaning."},air:{t:"Air purification",d:"Odours and dust out of the indoor air."}}},
+ru:{sub:"Уход за домом и машиной – с выездом к вам.",q:"Что вам нужно?",tabPh:"До / после",bef:"До",aft:"После",phNote:"Заглушка – тут будут наши фото",ourWork:"Наша работа",ourWorkD:"Актуальные работы, фото до/после и видео – в наших соцсетях.",askT:"Есть вопрос? Напишите нам.",cities:["Кайнуу","Каяни","Соткамо","Палтамо"],slogans:["Арендуй.","Зарабатывай.","Сервис."],
+ cat:{home:"Дом",car:"Авто",both:"Дом · Авто"},from:"от",step:"Шаг",stepsL:"Как это делается",book:"Забронировать в WhatsApp",more:"Цены и аренда",close:"Закрыть",openA:"Открыть",
+ closedA:"Пока недоступно",notify:"Сообщить, когда откроется",notifyMsg:"сообщите, когда откроется услуга:",draft:"черновик, цены примерные",nogl:"3D не загрузилось на этом устройстве.",
+ svc:{
+  sofa:{t:"Химчистка мебели",desc:"Глубоко чистим диваны, кресла и матрасы профессиональным аппаратом в 4 прохода: грязь, глубокая грязь, промывка и сушка. Ткань сохнет за несколько часов. Можно арендовать тот же аппарат и почистить самому.",d:"Диваны, кресла и матрасы – глубокая чистка в 4 прохода.",season:"",
+   info:"Приезжаем с аппаратом и химией. Ткань сохнет за несколько часов. Или арендуйте аппарат и почистите сами.",
+   ph:[["Предобработка","Pol Star на пятна – нейтральный pH, безопасно для ткани."],["Щётка","Щётка на дрели вводит средство и отрывает грязь."],["1-й проход – грязь наружу","Насадка впрыскивает и сразу вытягивает. В бак – коричневая вода."],["2-й проход – глубокая грязь","Второй проход забирает остатки. Вода светлеет."],["3-й проход – промывка","Чистая вода убирает химию, чтобы ткань не липла."],["4-й проход – сушка","Всасывание без воды – ткань сохнет за часы."],["Готово","Слева – после, справа – тот же диван до."]]},
+  car:{t:"Химчистка автомобиля",desc:"Чистим салон у вас во дворе: сиденья и обивку, кожу, пластик, торпеду, двери, ручки и подлокотники, пол, коврики и стёкла изнутри. Потолок и багажник – дополнительно. Нужна только розетка. Или арендуйте аппарат и почистите сами.",d:"Сиденья, кожа, пластик, пол и коврики. Потолок и багажник – дополнительно.",season:"Летом, от +15 °C",
+   info:"Работаем у вас во дворе – нужна только розетка. Машина готова к поездке в тот же день.",
+   ph:[["Пылесос","Коврики, пол и сиденья – песок и крошки прочь."],["Предобработка","Pol Star на пятна – безопасно для ткани и кожи."],["Щётка","Щётка отрывает грязь из глубины волокон."],["Экстракция","Насадка впрыскивает и сразу вытягивает."],["Промывка","Чистая вода убирает химию – сиденье не липнет."],["Сушка","Всасывание без воды. Влага уходит."],["Пластик и детали","Двери, ручки, подлокотники и консоль – очиститель и микрофибра."],["Готово","Слева чисто, справа та же машина до."]]},
+  tire:{t:"Замена колёс у дома",desc:"Заберём колёса из кладовки, подвала или гаража, донесём до машины и поменяем у вас во дворе – вам не нужно ничего таскать. Затяжка динамометрическим ключом и проверка давления. Или возьмите инструмент в аренду и поменяйте сами.",d:"Меняем колёса там, где стоит ваша машина.",season:"Весной и осенью",
+   info:"Меняем колёса, уже собранные на дисках. Затяжка динамометрическим ключом и проверка давления. Балансировку на месте не делаем.",
+   ph:[["Срываем гайки","Ослабляем, пока колесо ещё на земле."],["Поднимаем","Домкрат в штатную точку, машина вверх."],["Откручиваем","Гайки – в магнитную чашку, ни одна не потеряется."],["Снимаем колесо","Заодно смотрим тормозной диск и ступицу."],["Ставим другое","Летнее или зимнее колесо – на ступицу."],["Крест-накрест","Наживляем гайки крест-накрест, чтобы диск сел ровно."],["Динамометрический ключ","Опускаем и тянем каждую гайку с нужным моментом."],["Готово","Давление проверено, старые колёса – в пакеты."]]},
+  clean:{t:"Уборка дома",desc:"Убираем квартиры и дома – и после вечеринок. Цена по часам: пришлите фото в WhatsApp, и мы оценим время. Инвентарь и средства привозим с собой.",d:"Пылесос, влажная уборка и блеск – дом готов.",season:"",info:"Привозим инвентарь и средства. Цена по размеру жилья, вычет kotitalousvähennys действует на работу.",ph:[["Пылесос","Пыль и крошки – с пола."],["Влажная уборка","Влажная швабра и нужное средство снимают грязь."],["Сушка","Пол высыхает без разводов."],["Готово","Чистый и свежий дом."]]},
+  ozone:{t:"Аренда озонатора",desc:"Сдаём в аренду профессиональный озонатор: убирает запах табака, животных, плесени и гари в квартире или машине. Привезём и заберём. Во время работы в помещении не должно быть людей, животных и растений.",d:"Запах табака, животных и плесени – прочь. Дом или машина.",season:"",info:"Профессиональный озонатор убирает запах, а не маскирует его. Во время обработки в помещении не должно быть людей, животных и растений.",ph:[["Ставим прибор","Озонатор в помещение. Люди и животные выходят."],["Озон заполняет комнату","Озон проникает везде, даже в ткань."],["Запах распадается","Озон разрушает молекулы запаха, а не маскирует их."],["Проветривание","Окна открыты, озон снова становится кислородом."],["Готово","Свежий воздух без ароматизаторов."]]}},
+ soon:{clean:{t:"Уборка дома",d:"Регулярная или разовая уборка."},air:{t:"Очистка воздуха",d:"Запахи и пыль – прочь из помещения."}}}
+};
+let lang="fi";
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
+const lerp=(a,b,t)=>a+(b-a)*t,cl=t=>t<0?0:t>1?1:t,ease=t=>t<.5?2*t*t:1-((-2*t+2)**2)/2;
+
+/* ================= fabric helpers (2D) ================= */
+function hash(x,y){const s=Math.sin(x*127.1+y*311.7)*43758.5453;return s-Math.floor(s)}
+function vnoise(x,y){const i=Math.floor(x),j=Math.floor(y),f=x-i,g=y-j,u=f*f*(3-2*f),v=g*g*(3-2*g);
+  return (hash(i,j)*(1-u)+hash(i+1,j)*u)*(1-v)+(hash(i,j+1)*(1-u)+hash(i+1,j+1)*u)*v}
+function dirtField(GW,GH,off,ring){const d=new Float32Array(GW*GH),fn=new Float32Array(GW*GH),R=k=>hash(off*1.37+k*7.13,off*.71+k*3.3);
+  const st=[];if(ring)st.push({u:.22+.3*R(1),v:.3+.3*R(2),r:.14,s:.75,ring:1});
+  for(let k=0;k<4;k++)st.push({u:.12+.76*R(10+k),v:.15+.7*R(20+k),r:.07+.1*R(30+k),s:.5+.2*R(40+k)});
+  for(let j=0;j<GH;j++)for(let i=0;i<GW;i++){const u=i/GW,v=j/GH,k=j*GW+i,nz=vnoise(u*7+off,v*7);
+    let x=.14+.3*v*v+.14*nz;
+    for(const s of st){const dist=Math.hypot(u-s.u,(v-s.v)*.85);
+      if(s.ring)x+=s.s*(.9*Math.exp(-(((dist-s.r)/.016)**2))+(dist<s.r?.32:0))*(.7+.3*nz);
+      else x+=s.s*Math.max(0,1-dist/s.r)**1.3*(.55+.45*vnoise(u*20,v*20+off))}
+    d[k]=Math.min(1,x);fn[k]=.55+.45*hash(i*.37,j*.91)}
+  return{d,fn}}
+function weave(w,h,base){const c=document.createElement("canvas");c.width=w;c.height=h;const x=c.getContext("2d");
+  x.fillStyle=base;x.fillRect(0,0,w,h);
+  for(let y=0;y<h;y+=3){x.fillStyle=`rgba(255,255,255,${.05+.05*Math.random()})`;x.fillRect(0,y,w,1)}
+  for(let i=0;i<w;i+=3){x.fillStyle=`rgba(40,55,70,${.04+.04*Math.random()})`;x.fillRect(i,0,1,h)}
+  x.strokeStyle="rgba(60,75,90,.25)";x.lineWidth=2;x.setLineDash([6,5]);x.strokeRect(14,14,w-28,h-28);return c}
+const D0=[112,80,46];
+function compose(n,L,img){const a=img.data;
+  for(let k=0;k<n;k++){let C0=0,C1=0,C2=0,A=0;
+    const ov=(r,g,b,al)=>{if(al<=0)return;C0=r*al+C0*(1-al);C1=g*al+C1*(1-al);C2=b*al+C2*(1-al);A=al+A*(1-al)};
+    const dc=L.dc||D0;ov(dc[0],dc[1],dc[2],Math.min(.9,L.dirt[k]));ov(30,40,54,L.wet[k]*.34);ov(236,244,250,L.res[k]*.42*L.fn[k]);
+    const fd=L.fd[k];ov(245-50*fd,248-82*fd,252-128*fd,Math.min(1,L.foam[k])*.92*L.fn[k]);
+    const p=k*4;if(A>0){a[p]=C0/A;a[p+1]=C1/A;a[p+2]=C2/A}a[p+3]=A*255}}
+
+/* ================= three helpers ================= */
+let V3,Q;
+function rr(w,d,r){const s=new THREE.Shape(),x=-w/2,y=-d/2;s.moveTo(x+r,y);s.lineTo(x+w-r,y);s.quadraticCurveTo(x+w,y,x+w,y+r);s.lineTo(x+w,y+d-r);s.quadraticCurveTo(x+w,y+d,x+w-r,y+d);s.lineTo(x+r,y+d);s.quadraticCurveTo(x,y+d,x,y+d-r);s.lineTo(x,y+r);s.quadraticCurveTo(x,y,x+r,y);return s}
+function pad(w,d,h,r,b){const g=new THREE.ExtrudeGeometry(rr(w,d,r),{depth:h,bevelEnabled:true,bevelThickness:b,bevelSize:b,bevelSegments:5,curveSegments:10});g.rotateX(-Math.PI/2);return g}
+function mesh(g,m,c=true){const o=new THREE.Mesh(g,m);o.castShadow=c;o.receiveShadow=true;return o}
+const std=(c,r=.85,e={})=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:r,metalness:0},e));
+function between(o,a,b){const d=b.clone().sub(a),l=d.length();o.scale.set(1,l,1);o.position.copy(a).add(b).multiplyScalar(.5);o.quaternion.setFromUnitVectors(new V3(0,1,0),d.normalize())}
+function cyl(r1,r2,h,seg,m,axisZ){const g=new THREE.CylinderGeometry(r1,r2,h,seg);if(axisZ)g.rotateX(Math.PI/2);return mesh(g,m)}
+
+function baseScene(R,o={}){
+  const S=new THREE.Scene();
+  S.add(new THREE.HemisphereLight(0xdfefff,0x253447,.75));
+  const key=new THREE.DirectionalLight(0xffffff,1.25);key.position.set(o.kx||1.8,4,2.6);key.castShadow=true;key.shadow.mapSize.set(1024,1024);
+  const e=o.sh||2.4;Object.assign(key.shadow.camera,{left:-e,right:e,top:e,bottom:-e,near:.5,far:14});key.shadow.bias=-.0005;S.add(key);
+  const rim=new THREE.PointLight(0x5ed3ff,1.1,8);rim.position.set(-2.2,1.6,-1.3);S.add(rim);
+  const fill=new THREE.PointLight(0x2e8bff,.5,7);fill.position.set(2.2,.9,1.6);S.add(fill);
+  const ac=document.createElement("canvas");ac.width=ac.height=128;const ax=ac.getContext("2d"),gr=ax.createRadialGradient(64,64,0,64,64,64);
+  gr.addColorStop(0,"#fff");gr.addColorStop(.6,"#bbb");gr.addColorStop(1,"#000");ax.fillStyle=gr;ax.fillRect(0,0,128,128);
+  const floor=new THREE.Mesh(new THREE.CircleGeometry(o.fr||3.2,64),new THREE.MeshStandardMaterial({color:o.floor||0x112131,roughness:1,transparent:true,alphaMap:new THREE.CanvasTexture(ac)}));
+  floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;if(o.fx)floor.position.x=o.fx;S.add(floor);
+  return S}
+
+function parts(S){const NP=700,pos=new Float32Array(NP*3).fill(-99),col=new Float32Array(NP*3),P=[];for(let i=0;i<NP;i++)P.push({a:0});
+  const g=new THREE.BufferGeometry();g.setAttribute("position",new THREE.BufferAttribute(pos,3));g.setAttribute("color",new THREE.BufferAttribute(col,3));
+  const sc=document.createElement("canvas");sc.width=sc.height=32;const sx=sc.getContext("2d"),gr=sx.createRadialGradient(16,16,0,16,16,16);
+  gr.addColorStop(0,"#fff");gr.addColorStop(.5,"rgba(255,255,255,.6)");gr.addColorStop(1,"rgba(255,255,255,0)");sx.fillStyle=gr;sx.fillRect(0,0,32,32);
+  const pts=new THREE.Points(g,new THREE.PointsMaterial({size:.017,map:new THREE.CanvasTexture(sc),vertexColors:true,transparent:true,depthWrite:false}));pts.frustumCulled=false;S.add(pts);
+  let pi=0;const tc=new THREE.Color();
+  return{spawn(o,v,life,c,gv=0){const i=pi;pi=(pi+1)%NP;Object.assign(P[i],{a:1,x:o.x,y:o.y,z:o.z,vx:v.x,vy:v.y,vz:v.z,life,g:gv});tc.set(c);col.set([tc.r,tc.g,tc.b],i*3)},
+    step(dt){for(let i=0;i<NP;i++){const q=P[i],k=i*3;if(!q.a)continue;q.life-=dt;q.vy-=q.g*dt;q.x+=q.vx*dt;q.y+=q.vy*dt;q.z+=q.vz*dt;
+      if(q.life<=0){q.a=0;pos[k+1]=-99;continue}pos[k]=q.x;pos[k+1]=q.y;pos[k+2]=q.z}
+      g.attributes.position.needsUpdate=true;g.attributes.color.needsUpdate=true}}}
+
+/* ---------- fabric panel: one cushion surface that gets cleaned ---------- */
+class Fabric{
+  constructor(R,o){
+    this.w=o.w;this.d=o.d;this.h=o.h||.12;this.b=o.b||.03;this.prog=o.prog||[];this.win=o.win||[0,1];this.wins=o.wins||{};this.handle=o.handle||[.06,.45,.5];this.key="";
+    const GW=this.GW=o.GW||96,GH=this.GH=Math.max(24,Math.round(GW*o.d/o.w)),N=this.N=GW*GH,CW=512,CH=Math.round(512*o.d/o.w);
+    this.base=o.baseCanvas?o.baseCanvas(CW,CH):weave(CW,CH,o.base||"#b9c4cf");this.F=dirtField(GW,GH,o.seed||1,o.ring!==false);
+    const c=document.createElement("canvas");c.width=CW;c.height=CH;this.x=c.getContext("2d");
+    const t=this.t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;t.anisotropy=Math.min(8,R.capabilities.getMaxAnisotropy());t.repeat.set(1/o.w,1/o.d);t.offset.set(.5,.5);
+    this.mesh=mesh(pad(o.w,o.d,this.h,o.r||.06,this.b),[std(0xffffff,.92,{map:t}),o.side]);
+    this.ov=document.createElement("canvas");this.ov.width=GW;this.ov.height=GH;this.ox=this.ov.getContext("2d");this.img=this.ox.createImageData(GW,GH);
+    this.L={dc:o.dc,dirt:new Float32Array(N),wet:new Float32Array(N),res:new Float32Array(N),foam:new Float32Array(N),fd:new Float32Array(N),fn:this.F.fn};
+    this.tS=new Float32Array(N);this.tB=new Float32Array(N);this.tP=new Float32Array(N);
+    for(let j=0;j<GH;j++)for(let i=0;i<GW;i++){const u=(i+.5)/GW,v=(j+.5)/GH,k=j*GW+i,col=Math.min(3,Math.floor(u*4)),al=col%2?1-v:v;
+      this.tP[k]=(col+al)/4;this.tS[k]=u*.9+v*.05;this.tB[k]=Math.min(1,u*.85+.12*Math.abs(Math.sin(v*9)))}
+  }
+  sl(s,ty){const w=(ty&&this.wins[ty])||this.win;return cl((s-w[0])/(w[1]-w[0]))}
+  state(p,s){const key=p+":"+s.toFixed(4);if(key===this.key)return;this.key=key;
+    const P=this.prog,L=this.L,F=this.F,SL=P.map(ty=>this.sl(s,ty));
+    for(let i=0;i<this.N;i++){let d=F.d[i],foam=0,fd=0,wet=0,res=0;
+      for(let k=0;k<P.length&&k<=p;k++){const ty=P[k];let c;
+        if(ty==="-")continue;if(k<p)c=1;else if(ty==="done")c=s;else{const tt=ty==="spray"?this.tS[i]:(ty==="brush"||ty==="vac"||ty==="vacm"||ty==="wipe")?this.tB[i]:this.tP[i];c=cl((SL[k]-tt)*14)}
+        if(c<=0)continue;
+        if(ty==="vac")d*=lerp(1,.9,c);
+        else if(ty==="vacm")d*=lerp(1,.12,c);
+        else if(ty==="spray")foam=c;
+        else if(ty==="brush"){fd=c;d*=lerp(1,.85,c)}
+        else if(ty==="p1"){d*=lerp(1,.35,c);foam*=1-c;wet=Math.max(wet,c*.9);res=Math.max(res,c*.55)}
+        else if(ty==="p2")d*=lerp(1,.3,c);
+        else if(ty==="rinse"){d*=lerp(1,.45,c);res*=1-c}
+        else if(ty==="dry")wet*=lerp(1,.15,c);
+        else if(ty==="wipe")d*=lerp(1,.06,c);
+        else if(ty==="done")wet*=1-c*.95}
+      L.dirt[i]=d;L.foam[i]=foam;L.fd[i]=fd;L.wet[i]=wet;L.res[i]=res}
+    compose(this.N,L,this.img);this.ox.putImageData(this.img,0,0);this.x.drawImage(this.base,0,0);this.x.drawImage(this.ov,0,0,this.base.width,this.base.height);this.t.needsUpdate=true}
+  world(u,v,n=0){return this.mesh.localToWorld(new V3((u-.5)*this.w,this.h+this.b+n,(v-.5)*this.d))}
+  quat(){return this.mesh.getWorldQuaternion(new Q())}
+  uv(ty,s){const sl=this.sl(s,ty);
+    if(ty==="spray")return[-.05+1.1*sl,.5];
+    if(ty==="brush"||ty==="vac"||ty==="wipe")return[.08+.84*sl,.5+.32*Math.sin(sl*Math.PI*9)];
+    const r=Math.min(3,Math.floor(sl*4)),f=sl*4-r;return[(r+.5)/4,cl(r%2?1-f:f)*.9+.05]}
+}
+
+/* ---------- upholstery kit: extractor, wand, bottle, drill brush ---------- */
+function uphKit(S,mPos,mRot,opt={}){
+  const dark=std(0x1d2733,.55),steel=std(0xc9d3dc,.25,{metalness:.85}),blue=std(0x1565c0,.42,{metalness:.1});
+  const M=new THREE.Group();M.position.set(...mPos);M.rotation.y=mRot;S.add(M);
+  let tw;
+  if(opt.bucket){const bk=new THREE.Mesh(new THREE.CylinderGeometry(.16,.13,.3,32,1,true),std(0x2e8bff,.4,{side:THREE.DoubleSide}));bk.castShadow=true;bk.position.y=.15;M.add(bk);
+    const bb=cyl(.13,.13,.01,32,std(0x1565c0,.5));bb.position.y=.005;M.add(bb);
+    tw=mesh(new THREE.CylinderGeometry(.15,.15,.01,32),std(0x8fd3ff,.1,{transparent:true,opacity:.8}),false);tw.position.y=.22;M.add(tw);
+    const bh=mesh(new THREE.TorusGeometry(.16,.008,8,32,Math.PI),steel);bh.position.y=.3;M.add(bh)}
+  else{const mb=mesh(pad(.36,.3,.26,.06,.03),blue);mb.position.y=.05;M.add(mb);
+  const tank=mesh(pad(.32,.26,.1,.05,.02),new THREE.MeshPhysicalMaterial({color:0xe8f3fb,roughness:.12,transparent:true,opacity:.6}));tank.position.y=.34;M.add(tank);
+  tw=mesh(pad(.28,.22,.05,.04,.01),std(0x5b3c1f,.3,{transparent:true,opacity:0}),false);tw.position.y=.355;M.add(tw);
+  const hd=mesh(new THREE.TorusGeometry(.09,.016,10,24,Math.PI),dark);hd.position.y=.47;M.add(hd);
+  [[-.14,.12],[.14,.12],[-.14,-.12],[.14,-.12]].forEach(([x,z])=>{const w=cyl(.035,.035,.03,16,dark);w.rotation.z=Math.PI/2;w.position.set(x,.035,z);M.add(w)})}
+  const wand=new THREE.Group();S.add(wand);wand.add(mesh(new THREE.BoxGeometry(.24,.035,.06),dark));
+  const win=mesh(new THREE.BoxGeometry(.2,.012,.035),new THREE.MeshPhysicalMaterial({color:0xdff2fb,roughness:.05,transparent:true,opacity:.7}),false);win.position.y=.024;wand.add(win);
+  const nk=cyl(.018,.022,.08,14,dark);nk.position.y=.05;wand.add(nk);
+  const tube=cyl(.013,.013,1,12,steel);S.add(tube);const grip=cyl(.02,.02,.14,14,dark);S.add(grip);
+  const hoseM=std(0x2a3440,.5);let hose=null;
+  const bottle=new THREE.Group(),bi=new THREE.Group();bi.rotation.x=-.85;bottle.add(bi);S.add(bottle);
+  bi.add(mesh(new THREE.CylinderGeometry(.04,.045,.17,20),new THREE.MeshPhysicalMaterial({color:0xffffff,roughness:.2,transparent:true,opacity:.7})));
+  const bl=cyl(.036,.041,.11,20,std(0xffcf5a,.3,{transparent:true,opacity:.85}));bl.position.y=-.025;bi.add(bl);
+  const bh=mesh(new THREE.BoxGeometry(.05,.05,.09),blue);bh.position.set(0,.105,.015);bi.add(bh);
+  const drill=new THREE.Group(),brush=new THREE.Group();drill.add(brush);S.add(drill);
+  const bc=document.createElement("canvas");bc.width=256;bc.height=32;const bx=bc.getContext("2d");for(let i=0;i<256;i+=2){bx.fillStyle=`hsl(205,30%,${25+Math.random()*25}%)`;bx.fillRect(i,0,2,32)}
+  const btx=new THREE.CanvasTexture(bc);btx.encoding=THREE.sRGBEncoding;
+  brush.add(mesh(new THREE.CylinderGeometry(.075,.08,.035,32,1,true),std(0xffffff,.9,{map:btx,side:THREE.DoubleSide})));
+  const disc=cyl(.078,.078,.015,32,std(0xf2f6fa,.5));disc.position.y=.024;brush.add(disc);
+  const mk=mesh(new THREE.BoxGeometry(.11,.004,.012),blue,false);mk.position.y=.033;brush.add(mk);
+  [[.06,.016,.022,.06,steel],[.16,.038,.042,.15,std(0x2d3946,.45)]].forEach(([y,r1,r2,h,m])=>{const o=cyl(r1,r2,h,16,m);o.position.y=y;drill.add(o)});
+  const db=mesh(new THREE.BoxGeometry(.07,.05,.07),blue);db.position.y=.25;drill.add(db);
+  const dg=mesh(new THREE.BoxGeometry(.045,.04,.15),std(0x2d3946,.5));dg.position.set(0,.2,.09);dg.rotation.x=-.3;drill.add(dg);
+  const cloth=new THREE.Group();S.add(cloth);
+  const cl1=mesh(pad(.12,.09,.012,.02,.006),std(0x6fd8ff,.95));cloth.add(cl1);
+  const cl2=mesh(new THREE.BoxGeometry(.05,.03,.06),std(0x1d2733,.6));cl2.position.y=.03;cloth.add(cl2);
+  const P=parts(S);
+  const vis={b:0,d:0,w:0,c:0};const OUT={vac:"#8c7a64",p1:"#6b4524",p2:"#b08a5a",rinse:"#dbe4e8",dry:"#ffffff"};
+  const TANK={p1:"#5b3c1f",p2:"#8a6a42",rinse:"#a99a85",dry:"#b8ad9d"};
+  function place(o,T,q,snap,dt){const k=snap?1:Math.min(1,dt*10);o.position.lerp(T,k);o.quaternion.slerp(q,k)}
+  return{P,
+    drive(panel,ty,s,dt,on,tankF){
+      const want={b:ty==="spray",d:ty==="brush",w:["vac","p1","p2","rinse","dry"].includes(ty)&&!!panel,c:ty==="wipe"&&!!panel};
+      const snap={};for(const k in want){snap[k]=vis[k]<.05;vis[k]+=((want[k]?1:0)-vis[k])*Math.min(1,dt*8)}
+      bottle.scale.setScalar(Math.max(.001,vis.b));cloth.scale.setScalar(Math.max(.001,vis.c));drill.scale.setScalar(Math.max(.001,vis.d));
+      tube.visible=grip.visible=vis.w>.05;if(!want.w)wand.scale.setScalar(Math.max(.001,vis.w));
+      if(panel&&(want.b||want.d||want.w||want.c)){panel.mesh.updateWorldMatrix(true,false);
+        const q=panel.quat(),n=new V3(0,1,0).applyQuaternion(q),[u,v]=panel.uv(ty,s);
+        if(want.c){place(cloth,panel.world(u,v,.004),q,snap.c,dt);if(on&&Math.random()<.5)P.spawn(panel.world(u+(Math.random()-.5)*.1,v,.01),n.clone().multiplyScalar(.25),.5,"#e9f7ff")}
+        if(want.b){place(bottle,panel.world(u,.5,.32),q,snap.b,dt);
+          if(on)for(let i=0;i<3;i++){const o=bottle.position.clone().addScaledVector(n,-.03),tg=panel.world(cl(u+(Math.random()-.5)*.35),Math.random(),0),Tt=.35;P.spawn(o,tg.sub(o).multiplyScalar(1/Tt),Tt,"#ffffff")}}
+        if(want.d){place(drill,panel.world(u,v,.012),q,snap.d,dt);if(on){brush.rotation.y+=dt*30;
+          if(Math.random()<.7){const a=Math.random()*6.28,o=panel.world(u+Math.cos(a)*.08/panel.w,v+Math.sin(a)*.08/panel.d,.01);P.spawn(o,n.clone().multiplyScalar(.5).add(new V3(Math.cos(a)*.3,0,Math.sin(a)*.3)),.45,"#d8c9b0",3)}}}
+        if(want.w){place(wand,panel.world(u,v,.012),q,snap.w,dt);
+          const sx=(ty==="vac"?.45:panel.w/4/.24*1.05)*Math.max(.001,vis.w);wand.scale.set(sx,Math.max(.001,vis.w),Math.max(.001,vis.w));
+          const a=wand.position.clone().addScaledVector(n,.075),h=panel.handle,b=panel.world(u+h[0],v+h[1],h[2]);
+          between(tube,a,b);grip.position.copy(b);grip.quaternion.copy(tube.quaternion);
+          const m=M.localToWorld(new V3(.1,.3,.1)),mid=b.clone().add(m).multiplyScalar(.5);
+          const cu=new THREE.CatmullRomCurve3([b.clone().addScaledVector(n,.04),new V3(mid.x,Math.max(.3,mid.y),mid.z+.25),new V3(mid.x-.15,.05,mid.z+.15),m]);
+          if(!opt.bucket){if(hose){S.remove(hose);hose.geometry.dispose()}hose=mesh(new THREE.TubeGeometry(cu,40,.016,8),hoseM);S.add(hose)}
+          win.material.color.lerp(new THREE.Color(OUT[ty]),Math.min(1,dt*4));
+          if(on)for(let i=0;i<2;i++){const du=(Math.random()-.5)*(ty==="vac"?.1:.24);
+            if(ty!=="vac"&&ty!=="dry")P.spawn(panel.world(u+du,v,.05),n.clone().multiplyScalar(-.3),.14,"#4fc3f7");
+            P.spawn(panel.world(u+du,v,.004),n.clone().multiplyScalar(.45),.2,OUT[ty])}}
+      }
+      if(!want.w&&hose&&vis.w<.05){S.remove(hose);hose.geometry.dispose();hose=null}
+      if(opt.bucket){}else if(TANK[ty]){tw.material.color.set(TANK[ty]);tw.material.opacity=.85;tw.scale.y=.3+.7*tankF}else if(ty!=="done"&&ty!=="wipe")tw.material.opacity=0;
+      P.step(dt)}}
+}
+
+/* ================= scene 1: sofa ================= */
+function sceneSofa(R){
+  const S=baseScene(R),side=std(0x5f6f80,.95),frameM=std(0x4a5868,.9),wood=std(0x3a2b22,.6);
+  const base=mesh(new THREE.BoxGeometry(2.32,.22,1.02),frameM);base.position.set(0,.2,0);S.add(base);
+  [[-1.08,.42],[1.08,.42],[-1.08,-.42],[1.08,-.42]].forEach(([x,z])=>{const l=cyl(.03,.022,.1,12,wood);l.position.set(x,.05,z);S.add(l)});
+  const back=mesh(new THREE.BoxGeometry(2.32,.62,.2),frameM);back.position.set(0,.6,-.42);S.add(back);
+  [-1.22,1.22].forEach(x=>{const a=mesh(pad(.2,1,.36,.07,.04),side);a.position.set(x,.3,0);S.add(a)});
+  [-.53,.53].forEach(x=>{const b=mesh(pad(1,.5,.15,.08,.04),side);b.rotation.x=Math.PI/2-.22;b.position.set(x,.56,-.2);S.add(b)});
+  const PROG=["spray","brush","p1","p2","rinse","dry","done"];
+  const work=new Fabric(R,{w:1,d:.85,h:.14,r:.08,seed:3.1,side,prog:PROG,handle:[.06,.3,.5]});work.mesh.position.set(-.53,.32,.06);S.add(work.mesh);
+  const ref=new Fabric(R,{w:1,d:.85,h:.14,r:.08,seed:17.3,side});ref.mesh.position.set(.53,.32,.06);S.add(ref.mesh);
+  S.updateMatrixWorld(true);ref.state(-1,0);
+  const K=uphKit(S,[-1.62,0,.3],.5);
+  return{S,PH:[1,1.2,1.3,1.1,1.1,1,.9],camA:[[.15,1.7,2.35],[-.45,.18,.12]],camB:[[.1,1.9,3.1],[-.02,.15,.05]],
+    update(p,s,dt,on){work.state(p,s);const ty=PROG[p];K.drive(ty==="done"?null:work,ty,s,dt,on,s);
+      if(ty==="done"&&on&&Math.random()<.25)K.P.spawn(work.world(Math.random(),Math.random(),.01),new V3(0,.12,0),1.2,"#bfefff")}}
+}
+
+/* ================= scene 2: car seats ================= */
+function plasticCanvas(w,h){const c=document.createElement("canvas");c.width=w;c.height=h;const x=c.getContext("2d");
+  x.fillStyle="#2b3139";x.fillRect(0,0,w,h);for(let i=0;i<2600;i++){x.fillStyle=`rgba(255,255,255,${.02+.03*Math.random()})`;x.fillRect(Math.random()*w,Math.random()*h,1.5,1.5)}
+  for(let y=0;y<h;y+=6){x.fillStyle="rgba(0,0,0,.08)";x.fillRect(0,y,w,1)}return c}
+function sceneCar(R){
+  const S=baseScene(R,{floor:0x141c26,fr:2.8}),fab=std(0x4b5563,.95),plastic=std(0x1f252d,.55),steel=std(0xc9d3dc,.25,{metalness:.85}),chrome=std(0xdfe5ea,.15,{metalness:.9});
+  const PROG=["vac","spray","brush","p1","rinse","dry","wipe","done"],N="-",DUST=[176,170,158];
+  const carpet=mesh(new THREE.BoxGeometry(2.1,.02,1.6),std(0x232b35,1));carpet.position.set(0,.01,.12);S.add(carpet);
+  const matL=new Fabric(R,{w:.44,d:.42,h:.008,r:.04,b:.004,seed:31.7,base:"#3b4450",side:std(0x2a313b,1),GW:64,prog:["vacm",N,N,N,N,N,N,"done"],wins:{vac:[0,.34],vacm:[0,.34]},ring:false,dc:[150,118,78]});
+  matL.mesh.position.set(-.36,.025,.56);S.add(matL.mesh);
+  const matR=new Fabric(R,{w:.44,d:.42,h:.008,r:.04,b:.004,seed:44.1,base:"#3b4450",side:std(0x2a313b,1),GW:64,ring:false,dc:[150,118,78]});
+  matR.mesh.position.set(.36,.025,.56);S.add(matR.mesh);
+  const cons=new Fabric(R,{w:.2,d:.6,h:.26,r:.05,b:.02,seed:12.2,baseCanvas:plasticCanvas,side:plastic,GW:40,prog:[N,N,N,N,N,N,"wipe","done"],wins:{wipe:[.62,1]},ring:false,dc:DUST});
+  cons.mesh.position.set(0,.02,-.02);S.add(cons.mesh);
+  const gs=cyl(.008,.012,.12,10,chrome);gs.position.set(0,.36,.12);S.add(gs);const gk=mesh(new THREE.SphereGeometry(.03,18,14),std(0x111418,.4));gk.position.set(0,.43,.12);S.add(gk);
+  const door=new Fabric(R,{w:.5,d:1.0,h:.03,r:.05,b:.01,seed:7.7,baseCanvas:plasticCanvas,side:plastic,GW:60,prog:[N,N,N,N,N,N,"wipe","done"],wins:{wipe:[0,.62]},ring:false,dc:DUST});
+  door.mesh.rotation.z=-Math.PI/2;door.mesh.position.set(-.76,.56,.05);S.add(door.mesh);
+  const arm=mesh(pad(.08,.36,.04,.02,.01),plastic);arm.position.set(-.69,.47,.08);S.add(arm);
+  const hnd=mesh(new THREE.BoxGeometry(.02,.03,.13),chrome);hnd.position.set(-.71,.66,.28);S.add(hnd);
+  const sill=mesh(new THREE.BoxGeometry(.06,.05,1.02),std(0x10151b,.5));sill.position.set(-.73,.83,.05);S.add(sill);
+  const spk=cyl(.07,.07,.012,28,std(0x15191f,.7));spk.rotation.z=Math.PI/2;spk.position.set(-.715,.36,-.22);S.add(spk);
+  function seat(x,seed,live){const g=new THREE.Group();g.position.x=x;S.add(g);
+    const b=mesh(new THREE.BoxGeometry(.5,.18,.5),plastic);b.position.set(0,.13,0);g.add(b);
+    [-.2,.2].forEach(rx=>{const r=mesh(new THREE.BoxGeometry(.04,.04,.7),steel);r.position.set(rx,.04,0);g.add(r)});
+    const cush=new Fabric(R,{w:.42,d:.5,h:.08,r:.05,b:.025,seed,base:"#a9b2bc",side:fab,GW:80,prog:live?["vac","spray","brush","p1","rinse","dry",N,"done"]:[],win:[0,.55],wins:{vac:[.34,.68]},handle:[.05,.45,.5]});
+    cush.mesh.position.set(0,.23,.02);g.add(cush.mesh);
+    [-.255,.255].forEach(bx=>{const o=mesh(pad(.09,.52,.13,.04,.02),fab);o.position.set(bx,.23,.02);g.add(o)});
+    const bg=new THREE.Group();bg.position.set(0,.34,-.24);bg.rotation.x=-.22;g.add(bg);
+    const back=new Fabric(R,{w:.42,d:.6,h:.08,r:.05,b:.025,seed:seed+5,base:"#a9b2bc",side:fab,GW:80,prog:live?["vac","spray","brush","p1","rinse","dry",N,"done"]:[],win:[.55,1],wins:{vac:[.68,1]},handle:[.05,.35,.5],ring:false});
+    back.mesh.rotation.x=Math.PI/2;back.mesh.position.set(0,.33,-.11);bg.add(back.mesh);
+    [-.255,.255].forEach(bx=>{const o=mesh(pad(.09,.62,.14,.04,.02),fab);o.rotation.x=Math.PI/2;o.position.set(bx,.33,-.12);bg.add(o)});
+    const head=mesh(pad(.3,.17,.1,.06,.03),fab);head.rotation.x=Math.PI/2;head.position.set(0,.78,-.1);bg.add(head);
+    [-.08,.08].forEach(hx=>{const r=cyl(.008,.008,.08,8,steel);r.position.set(hx,.66,-.05);bg.add(r)});
+    return{cush,back}}
+  const W=seat(-.36,5.2,true),D=seat(.36,23.7,false);S.updateMatrixWorld(true);[D.cush,D.back,matR].forEach(f=>f.state(-1,0));
+  const crumbs=[],cm=std(0xd9c7a3,.8);
+  for(let i=0;i<34;i++){const u=.08+.84*hash(i,1.3),v=.1+.8*hash(i,7.9),m=mesh(new THREE.BoxGeometry(.012,.008,.01),cm,false);m.rotation.y=hash(i,4)*3;S.add(m);m.position.copy(W.cush.world(u,v,.004));m.userData={tb:Math.min(1,u*.85+.12*Math.abs(Math.sin(v*9)))};crumbs.push(m)}
+  const K=uphKit(S,[-1.12,0,1.0],.9),live=[W.cush,W.back,matL,cons,door];
+  function active(ty,s){if(ty==="done")return null;if(ty==="vac")return s<.34?matL:s<.68?W.cush:W.back;if(ty==="wipe")return s<.62?door:cons;return s<.55?W.cush:W.back}
+  return{S,PH:[1.2,1,1.1,1.4,1.1,1,1.3,.9],camA:[[.8,1.5,2.25],[-.3,.3,.05]],camB:[[.1,1.6,2.85],[-.06,.32,0]],
+    update(p,s,dt,on){live.forEach(f=>f.state(p,s));const ty=PROG[p];
+      K.drive(active(ty,s),ty,s,dt,on,s);
+      const csl=W.cush.sl(s,"vac");
+      for(const c of crumbs){const gone=p>0||(p===0&&csl>c.userData.tb+.03),t=gone?0:1,sc=c.scale.x+(t-c.scale.x)*Math.min(1,dt*10);c.scale.setScalar(Math.max(.001,sc));
+        if(p===0&&on&&gone&&sc>.3&&Math.random()<.3)K.P.spawn(c.position,new V3(0,.5,0),.2,"#d9c7a3")}
+      if(ty==="done"&&on&&Math.random()<.3){const pn=live[Math.floor(Math.random()*live.length)];K.P.spawn(pn.world(Math.random(),Math.random(),.01),new V3(0,.1,0),1.1,"#bfefff")}}}
+}
+
+/* ================= scene 3: tyre change ================= */
+function treadTex(winter){const c=document.createElement("canvas");c.width=512;c.height=64;const x=c.getContext("2d");
+  x.fillStyle="#17191c";x.fillRect(0,0,512,64);x.fillStyle="#0b0c0e";
+  [14,31,48].forEach(y=>x.fillRect(0,y-2,512,4));
+  for(let i=0;i<512;i+=winter?10:22){x.save();x.translate(i,0);if(winter){x.fillRect(0,4,2,8);x.fillRect(3,19,2,9);x.fillRect(0,35,2,10);x.fillRect(3,52,2,8)}else{x.fillRect(0,0,4,12);x.fillRect(0,52,4,12)}x.restore()}
+  const t=new THREE.CanvasTexture(c);t.wrapS=THREE.RepeatWrapping;t.repeat.set(winter?6:5,1);t.encoding=THREE.sRGBEncoding;return t}
+function wheel(winter){const g=new THREE.Group(),rub=std(0x1a1c20,.92);
+  const tire=mesh(new THREE.CylinderGeometry(.33,.33,.23,48,1),[std(0xffffff,.9,{map:treadTex(winter)}),rub,rub]);tire.geometry.rotateX(Math.PI/2);g.add(tire);
+  const rimM=winter?std(0x23272d,.45,{metalness:.5}):std(0xcfd6de,.22,{metalness:.85});
+  const rim=cyl(.205,.205,.245,40,rimM,true);g.add(rim);
+  const holeM=std(0x090b0e,.6);
+  if(winter){for(let i=0;i<8;i++){const a=i/8*Math.PI*2,h=cyl(.022,.022,.01,16,holeM,true);h.position.set(Math.cos(a)*.14,Math.sin(a)*.14,.123);g.add(h)}}
+  else{for(let i=0;i<5;i++){const a=Math.PI/2+i/5*Math.PI*2+Math.PI/5,w=mesh(new THREE.BoxGeometry(.05,.1,.01),holeM,false);w.position.set(Math.cos(a)*.135,Math.sin(a)*.135,.123);w.rotation.z=a-Math.PI/2;g.add(w)}}
+  const cap=cyl(.04,.045,.02,24,winter?std(0x30353c,.5):std(0x2e8bff,.3,{metalness:.4}),true);cap.position.z=.13;g.add(cap);
+  return g}
+function label(txt){const c=document.createElement("canvas");c.width=256;c.height=96;const x=c.getContext("2d");
+  x.fillStyle="rgba(7,17,28,.88)";x.strokeStyle="#6FD8FF";x.lineWidth=4;x.beginPath();if(x.roundRect)x.roundRect(4,4,248,88,20);else x.rect(4,4,248,88);x.fill();x.stroke();
+  x.fillStyle="#fff";x.font="700 46px Onest, system-ui, sans-serif";x.textAlign="center";x.textBaseline="middle";x.fillText(txt,128,50);
+  const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;const s=new THREE.Sprite(new THREE.SpriteMaterial({map:t,transparent:true,depthTest:false,opacity:0}));s.scale.set(.26,.1,1);s.renderOrder=9;return s}
+function sceneTire(R){
+  const S=baseScene(R,{sh:3.2,kx:2.4,fr:5,floor:0x152230}),car=new THREE.Group();S.add(car);
+  const sh=new THREE.Shape();
+  sh.moveTo(2.12,.3);sh.lineTo(1.67,.3);sh.absarc(1.25,.3,.42,0,Math.PI,false);sh.lineTo(-.88,.3);sh.absarc(-1.3,.3,.42,0,Math.PI,false);
+  sh.lineTo(-2.1,.3);sh.lineTo(-2.15,.72);sh.quadraticCurveTo(-2.12,.88,-1.9,.9);sh.lineTo(-1.45,.95);sh.lineTo(-1.0,1.36);sh.quadraticCurveTo(-.85,1.42,-.6,1.42);
+  sh.lineTo(.45,1.42);sh.quadraticCurveTo(.6,1.41,.72,1.32);sh.lineTo(1.25,.98);sh.lineTo(1.95,.88);sh.quadraticCurveTo(2.16,.84,2.17,.68);sh.lineTo(2.12,.3);
+  const bg=new THREE.ExtrudeGeometry(sh,{depth:1.5,bevelEnabled:true,bevelThickness:.06,bevelSize:.05,bevelSegments:4,curveSegments:24});bg.translate(0,0,-.75);
+  car.add(mesh(bg,new THREE.MeshPhysicalMaterial({color:0xe6ebf0,roughness:.35,metalness:.2,clearcoat:1,clearcoatRoughness:.15})));
+  const ws=new THREE.Shape();ws.moveTo(-1.36,1.0);ws.lineTo(-.97,1.33);ws.lineTo(.43,1.33);ws.lineTo(.62,1.3);ws.lineTo(1.1,1.0);ws.lineTo(-1.36,1.0);
+  const wg=new THREE.ExtrudeGeometry(ws,{depth:1.68,bevelEnabled:false});wg.translate(0,0,-.84);car.add(mesh(wg,std(0x0e1824,.15,{metalness:.5}),false));
+  const pil=mesh(new THREE.BoxGeometry(.07,.34,1.7),std(0x10161e,.4),false);pil.position.set(-.22,1.16,0);car.add(pil);
+  [[.52],[-.52]].forEach(([z])=>{const hl=mesh(new THREE.BoxGeometry(.06,.07,.3),std(0xdff6ff,.2,{emissive:0x6fd8ff,emissiveIntensity:.9}),false);hl.position.set(2.15,.72,z);car.add(hl);
+    const tl=mesh(new THREE.BoxGeometry(.05,.08,.28),std(0x7a1010,.3,{emissive:0xff2a2a,emissiveIntensity:.5}),false);tl.position.set(-2.16,.76,z);car.add(tl)});
+  const sill=mesh(new THREE.BoxGeometry(2.6,.06,.04),std(0x10161e,.6),false);sill.position.set(-.02,.3,.83);car.add(sill);
+  const steel=std(0xd5dbe2,.2,{metalness:.9}),disc=cyl(.2,.2,.028,40,std(0x8b939c,.35,{metalness:.8}),true);disc.position.set(1.25,.33,.62);car.add(disc);
+  const cal=mesh(new THREE.BoxGeometry(.1,.08,.06),std(0xc0392b,.4),false);cal.position.set(1.12,.45,.63);car.add(cal);
+  const hubc=cyl(.06,.06,.08,24,std(0x5d656e,.4,{metalness:.7}),true);hubc.position.set(1.25,.33,.67);car.add(hubc);
+  const NR=.065,ang=k=>Math.PI/2+k*2*Math.PI/5;
+  for(let k=0;k<5;k++){const st=cyl(.008,.008,.12,8,steel,true);st.position.set(1.25+Math.cos(ang(k))*NR,.33+Math.sin(ang(k))*NR,.74);car.add(st)}
+  const others=[[1.25,-.78,Math.PI],[-1.3,.78,0],[-1.3,-.78,Math.PI]].map(([x,z,r])=>{const a=wheel(true),b=wheel(false);[a,b].forEach(w=>{w.position.set(x,.33,z);w.rotation.y=r;car.add(w)});b.visible=false;return[a,b]});
+  const oldW=wheel(true),newW=wheel(false);S.add(oldW,newW);
+  const REST1=new V3(2.55,.33,1.15),REST1Q=new Q().setFromEuler(new THREE.Euler(0,-.55,0)),REST2=new V3(.1,.33,1.55),REST2Q=new Q().setFromEuler(new THREE.Euler(0,.45,0));
+  const nuts=[];for(let k=0;k<5;k++){const n=cyl(.018,.018,.026,6,steel,true);S.add(n);nuts.push(n)}
+  const tray=new THREE.Group();tray.position.set(1.7,0,1.45);S.add(tray);
+  tray.add(cyl(.1,.075,.045,28,std(0x9aa4ae,.3,{metalness:.8})));tray.children[0].position.y=.025;
+  const traySlot=k=>tray.position.clone().add(new V3(Math.cos(k*1.3)*.035,.06,Math.sin(k*1.3)*.035));
+  const jack=new THREE.Group();S.add(jack);const red=std(0xc62828,.45,{metalness:.2});
+  const jb=mesh(new THREE.BoxGeometry(.2,.08,.46),red);jb.position.y=.05;jack.add(jb);
+  const post=cyl(.03,.03,1,14,std(0x2d3238,.4,{metalness:.6}));jack.add(post);
+  const sad=cyl(.055,.055,.025,20,std(0x2d3238,.5));jack.add(sad);
+  const jh=cyl(.014,.014,1,10,red);jack.add(jh);between(jh,new V3(0,.1,.2),new V3(0,.6,.75));
+  const imp=new THREE.Group();S.add(imp);const blue=std(0x1565c0,.4),dk=std(0x1d2733,.5);
+  const so=cyl(.022,.022,.05,16,std(0x3a4048,.3,{metalness:.8}),true);so.position.z=.025;imp.add(so);
+  const mo=cyl(.045,.045,.16,20,blue,true);mo.position.z=.13;imp.add(mo);
+  const ih=mesh(new THREE.BoxGeometry(.045,.13,.05),dk);ih.position.set(0,-.08,.17);imp.add(ih);
+  const ib=mesh(new THREE.BoxGeometry(.08,.045,.1),dk);ib.position.set(0,-.16,.17);imp.add(ib);
+  const tq=new THREE.Group();S.add(tq);const tso=cyl(.022,.022,.05,16,std(0x3a4048,.3,{metalness:.8}),true);tso.position.z=.025;tq.add(tso);
+  const th=mesh(new THREE.BoxGeometry(.05,.05,.04),steel);th.position.z=.065;tq.add(th);
+  const tb=cyl(.012,.012,1,10,steel);tq.add(tb);between(tb,new V3(0,0,.065),new V3(.55,.06,.065));
+  const tg=cyl(.02,.02,.14,12,std(0xc62828,.5));tq.add(tg);between(tg,new V3(.42,.045,.065),new V3(.56,.062,.065));
+  const lab=label("110 Nm");S.add(lab);
+  const ring=new THREE.Mesh(new THREE.RingGeometry(.03,.038,32),new THREE.MeshBasicMaterial({color:0x6fd8ff,transparent:true,opacity:0,side:THREE.DoubleSide,depthWrite:false}));S.add(ring);
+  const ORDER=[0,2,4,1,3],vis={i:0,t:0};
+  const nutL=(k,out)=>new V3(1.25+Math.cos(ang(k))*NR,.33+Math.sin(ang(k))*NR,.925+out);
+  const nutW=(k,out)=>car.localToWorld(nutL(k,out));
+  const whW=out=>car.localToWorld(new V3(1.25,.33,.78+out));
+  function setWheel(w,pos,q){w.position.copy(pos);w.quaternion.copy(q)}
+  const arc=(a,b,g,hgt)=>a.clone().lerp(b,ease(g)).add(new V3(0,Math.sin(Math.PI*g)*hgt,0));
+  return{S,PH:[1.3,1.2,1.5,1,1,1.4,1.5,.9],camA:[[3.35,1.15,3.25],[1.15,.12,.7]],camB:[[4.3,2.2,5.2],[.3,.25,.3]],
+    update(p,s,dt,on){
+      let lift=0,jz=1.95;
+      if(p===1){jz=lerp(1.95,.5,ease(cl(s/.4)));lift=.1*ease(cl((s-.45)/.55))}
+      else if(p>=2&&p<=5){jz=.5;lift=.1}
+      else if(p===6){lift=.1*(1-ease(cl(s/.3)));jz=lerp(.5,1.95,ease(cl((s-.32)/.18)))}
+      car.position.y=lift;car.rotation.x=-lift*.45;car.updateMatrixWorld(true);const cq=car.quaternion;
+      jack.position.set(.55,0,jz);const top=jz<1.2?car.localToWorld(new V3(.55,.25,.5)).y:.25;
+      post.scale.y=Math.max(.01,top-.09);post.position.y=.09+(top-.09)/2;sad.position.y=top-.0125;
+      // nuts
+      for(let k=0;k<5;k++){let pos,spin=0;const n=nuts[k];
+        if(p===0){const f=s*5-k;spin=-1.6*cl((f-.3)/.7);pos=nutW(k,0)}
+        else if(p===1)pos=nutW(k,0),spin=-1.6;
+        else if(p===2){const f=s*5-k;if(f>=1)pos=traySlot(k);else if(f>.6)pos=arc(nutW(k,.06),traySlot(k),(f-.6)/.4,.18);else{const g=cl(f/.6);pos=nutW(k,.06*g);spin=-1.6-g*14}}
+        else if(p===3||p===4)pos=traySlot(k);
+        else if(p===5){const j=ORDER.indexOf(k),f=s*5-j;if(f<0)pos=traySlot(k);else if(f<.4)pos=arc(traySlot(k),nutW(k,.06),f/.4,.18);else{const g=cl((f-.4)/.6);pos=nutW(k,.06*(1-g));spin=g*14}}
+        else pos=nutW(k,0);
+        n.position.copy(pos);n.quaternion.copy(cq).multiply(new Q().setFromAxisAngle(new V3(0,0,1),spin))}
+      // wheels
+      if(p<3)setWheel(oldW,whW(0),cq);
+      else if(p===3){if(s<.45)setWheel(oldW,whW(.3*ease(s/.45)),cq);else{const g=(s-.45)/.55;oldW.position.copy(arc(whW(.3),REST1,g,.06));oldW.quaternion.copy(cq).slerp(REST1Q,ease(g))}}
+      else setWheel(oldW,REST1,REST1Q);
+      if(p<4)setWheel(newW,REST2,REST2Q);
+      else if(p===4){if(s<.6){const g=s/.6;newW.position.copy(arc(REST2,whW(.3),g,.06));newW.quaternion.copy(REST2Q).slerp(cq,ease(g))}else setWheel(newW,whW(.3*(1-ease((s-.6)/.4))),cq)}
+      else setWheel(newW,whW(0),cq);
+      others.forEach(([a,b])=>{a.visible=p<7;b.visible=p>=7});
+      // impact wrench
+      let it=null,ispin=false;
+      if(p===0){const k=Math.min(4,Math.floor(s*5)),f=s*5-k;it=nutW(k,.013);ispin=f>.3}
+      else if(p===2){const k=Math.min(4,Math.floor(s*5)),f=s*5-k;it=nutW(k,(f<.6?.06*f/.6:.06)+.013);ispin=f<.6}
+      else if(p===5){const j=Math.min(4,Math.floor(s*5)),k=ORDER[j],f=s*5-j;it=f>=.4?nutW(k,.06*(1-cl((f-.4)/.6))+.013):nutW(k,.12);ispin=f>=.4}
+      const iv=it?1:0;const snapI=vis.i<.05;vis.i+=(iv-vis.i)*Math.min(1,dt*8);imp.scale.setScalar(Math.max(.001,vis.i));
+      if(it){const k2=snapI?1:Math.min(1,dt*10);imp.position.lerp(it,k2);imp.quaternion.slerp(cq,k2);if(ispin&&on)so.rotation.z+=dt*40}
+      // torque wrench + click label
+      let tt=null,click=0;
+      if(p===6&&s>=.42){const x=(s-.42)/.58*5,j=Math.min(4,Math.floor(x)),f=x-j;tt=nutW(ORDER[j],.013);click=f>.6?1-(f-.6)/.4:0;
+        if(click>0){lab.position.copy(nutW(ORDER[j],.06)).add(new V3(0,.13,0));ring.position.copy(nutW(ORDER[j],.03));ring.quaternion.copy(cq);ring.scale.setScalar(1+(1-click)*2.5)}}
+      const snapT=vis.t<.05;vis.t+=((tt?1:0)-vis.t)*Math.min(1,dt*8);tq.scale.setScalar(Math.max(.001,vis.t));
+      if(tt){const k2=snapT?1:Math.min(1,dt*10);tq.position.lerp(tt,k2);tq.quaternion.slerp(cq,k2)}
+      lab.material.opacity=click>0?Math.min(1,click*3):Math.max(0,lab.material.opacity-dt*4);ring.material.opacity=click*.9}}
+}
+
+
+/* ================= scene 4: home cleaning ================= */
+function woodCanvas(w,h){const c=document.createElement("canvas");c.width=w;c.height=h;const x=c.getContext("2d"),rows=7,ph=h/rows;
+  for(let r=0;r<rows;r++){let xo=-((r*137)%220);while(xo<w){const len=180+((r*53+Math.abs(xo))%120),l=58+((r*31+Math.floor(Math.abs(xo)))%9);
+      x.fillStyle=`hsl(32,38%,${l}%)`;x.fillRect(xo,r*ph,len,ph);
+      for(let g=0;g<6;g++){x.strokeStyle=`rgba(90,55,25,${.08+.06*Math.random()})`;x.lineWidth=1;x.beginPath();const gy=r*ph+Math.random()*ph;x.moveTo(xo,gy);x.bezierCurveTo(xo+len*.3,gy+3,xo+len*.6,gy-3,xo+len,gy+1);x.stroke()}
+      x.fillStyle="rgba(60,35,15,.45)";x.fillRect(xo,r*ph,2,ph);xo+=len}
+    x.fillStyle="rgba(60,35,15,.5)";x.fillRect(0,r*ph,w,2)}
+  return c}
+function sceneClean(R){
+  const S=baseScene(R,{floor:0x112131,fr:3.2}),wall=std(0xdfe6ee,.95),wd=std(0x6b4a2e,.7),steel=std(0xc9d3dc,.25,{metalness:.85});
+  const bw=mesh(new THREE.BoxGeometry(2.8,1.7,.06),wall);bw.position.set(0,.85,-1.0);S.add(bw);
+  const lw=mesh(new THREE.BoxGeometry(.06,1.7,2.2),wall);lw.position.set(-1.4,.85,.07);S.add(lw);
+  const wf=mesh(new THREE.BoxGeometry(.74,.64,.04),std(0xffffff,.6));wf.position.set(.55,1.0,-.96);S.add(wf);
+  const wp=mesh(new THREE.BoxGeometry(.64,.54,.02),std(0xbfeaff,.2,{emissive:0x8fdcff,emissiveIntensity:.8}),false);wp.position.set(.55,1.0,-.94);S.add(wp);
+  const wm=mesh(new THREE.BoxGeometry(.02,.54,.03),std(0xffffff,.6),false);wm.position.set(.55,1.0,-.93);S.add(wm);
+  const PROG=["vac","p1","dry","done"];
+  const fl=new Fabric(R,{w:2.4,d:1.8,h:.01,r:.02,b:.005,seed:9.4,baseCanvas:woodCanvas,side:wd,GW:120,prog:PROG,handle:[.03,.22,1.0]});fl.mesh.position.set(0,0,-.05);S.add(fl.mesh);
+  const pot=cyl(.11,.08,.22,24,std(0xe9eef3,.6));pot.position.set(-1.1,.125,-.72);S.add(pot);
+  const lf=std(0x2f7d5b,.7);[[0,.38,0,.14],[.07,.48,.03,.1],[-.06,.46,-.02,.1],[0,.56,0,.08]].forEach(([x,y,z,r])=>{const o=mesh(new THREE.SphereGeometry(r,20,16),lf);o.position.set(-1.1+x,y,-.72+z);S.add(o)});
+  const tb=mesh(new THREE.BoxGeometry(.62,.04,.42),std(0xf3f5f7,.5));tb.position.set(.95,.46,-.62);S.add(tb);
+  [[.27,.17],[-.27,.17],[.27,-.17],[-.27,-.17]].forEach(([x,z])=>{const l=cyl(.015,.015,.44,10,std(0x23272d,.4,{metalness:.6}));l.position.set(.95+x,.23,-.62+z);S.add(l)});
+  const vase=cyl(.04,.05,.14,20,std(0x2e8bff,.3));vase.position.set(.85,.55,-.62);S.add(vase);
+  S.updateMatrixWorld(true);
+  const K=uphKit(S,[-1.15,0,.55],.4,{bucket:true});
+  return{S,PH:[1.2,1.6,1,.9],camA:[[.5,2.0,2.7],[0,.05,-.15]],camB:[[.3,2.3,3.3],[0,.15,-.2]],
+    update(p,s,dt,on){fl.state(p,s);const ty=PROG[p];K.drive(ty==="done"?null:fl,ty,s,dt,on,s);
+      if(ty==="done"&&on&&Math.random()<.35)K.P.spawn(fl.world(Math.random(),Math.random(),.01),new V3(0,.15,0),1.2,"#ffffff")}}
+}
+
+/* ================= scene 5: ozone treatment ================= */
+function screen(){const c=document.createElement("canvas");c.width=192;c.height=80;const x=c.getContext("2d"),t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;let cur="";
+  const m=mesh(new THREE.PlaneGeometry(.12,.05),new THREE.MeshBasicMaterial({map:t}),false);
+  return{m,set(txt){if(txt===cur)return;cur=txt;x.fillStyle="#04121c";x.fillRect(0,0,192,80);x.fillStyle="#6FD8FF";x.font="700 50px ui-monospace, Menlo, monospace";x.textAlign="center";x.textBaseline="middle";x.fillText(txt,96,44);t.needsUpdate=true}}}
+function sceneOzone(R){
+  const S=baseScene(R,{floor:0x112131,fr:3.2}),wall=std(0xdfe6ee,.95);
+  const ft=new THREE.CanvasTexture(woodCanvas(512,400));ft.encoding=THREE.sRGBEncoding;
+  const fl=mesh(new THREE.BoxGeometry(2.6,.03,2),std(0xffffff,.8,{map:ft}));fl.position.set(0,.015,0);S.add(fl);
+  const bw=mesh(new THREE.BoxGeometry(2.6,1.7,.06),wall);bw.position.set(0,.85,-1.0);S.add(bw);
+  const lw=mesh(new THREE.BoxGeometry(.06,1.7,2),wall);lw.position.set(-1.3,.85,0);S.add(lw);
+  const wf=mesh(new THREE.BoxGeometry(.74,.64,.04),std(0xffffff,.6));wf.position.set(.6,1.0,-.96);S.add(wf);
+  const sky=mesh(new THREE.PlaneGeometry(.64,.54),new THREE.MeshBasicMaterial({color:0x9fe0ff}),false);sky.position.set(.6,1.0,-.935);S.add(sky);
+  const sash=new THREE.Group();sash.position.set(.28,1.0,-.92);S.add(sash);
+  const sg=mesh(new THREE.BoxGeometry(.64,.54,.02),new THREE.MeshPhysicalMaterial({color:0xdff4ff,roughness:.05,transparent:true,opacity:.45}),false);sg.position.x=.32;sash.add(sg);
+  const sfm=std(0xffffff,.6);[[.32,.26,.66,.03],[.32,-.26,.66,.03],[0,0,.03,.54],[.64,0,.03,.54]].forEach(([x,y,w,h])=>{const o=mesh(new THREE.BoxGeometry(w,h,.03),sfm,false);o.position.set(x,y,0);sash.add(o)});
+  const fab=std(0x6b7a8a,.95),sofa=new THREE.Group();sofa.position.set(-.45,0,-.6);S.add(sofa);
+  [[0,.2,0,1.3,.24,.6],[0,.5,-.24,1.3,.4,.14],[-.62,.34,0,.12,.36,.6],[.62,.34,0,.12,.36,.6]].forEach(([x,y,z,w,h,d])=>{const o=mesh(new THREE.BoxGeometry(w,h,d),fab);o.position.set(x,y,z);sofa.add(o)});
+  const dev=new THREE.Group();dev.position.set(.55,.03,.3);dev.rotation.y=-.5;S.add(dev);
+  dev.add(mesh(pad(.34,.22,.2,.03,.015),std(0x2d3946,.45,{metalness:.2})));
+  const gr=document.createElement("canvas");gr.width=128;gr.height=64;const gx=gr.getContext("2d");gx.fillStyle="#1a222c";gx.fillRect(0,0,128,64);gx.fillStyle="#0a0e13";for(let i=6;i<128;i+=10)gx.fillRect(i,8,5,48);
+  const grill=mesh(new THREE.PlaneGeometry(.2,.1),new THREE.MeshStandardMaterial({map:new THREE.CanvasTexture(gr),roughness:.6}),false);grill.position.set(-.05,.11,.116);dev.add(grill);
+  const scr=screen();scr.m.position.set(.1,.13,.117);dev.add(scr.m);
+  const led=mesh(new THREE.SphereGeometry(.008,10,8),new THREE.MeshBasicMaterial({color:0x3ccb91}),false);led.position.set(.1,.085,.117);dev.add(led);
+  const hnd=mesh(new THREE.TorusGeometry(.07,.012,8,20,Math.PI),std(0x1d2733,.5));hnd.position.y=.24;dev.add(hnd);
+  const fan=new THREE.Group();fan.position.set(0,.236,0);dev.add(fan);
+  for(let i=0;i<4;i++){const b=mesh(new THREE.BoxGeometry(.06,.004,.018),std(0x9aa4ae,.4,{metalness:.6}),false);b.position.x=.03;b.rotation.x=.4;const g=new THREE.Group();g.rotation.y=i*Math.PI/2;g.add(b);fan.add(g)}
+  const spr=(()=>{const c=document.createElement("canvas");c.width=c.height=32;const x=c.getContext("2d"),g=x.createRadialGradient(16,16,0,16,16,16);g.addColorStop(0,"#fff");g.addColorStop(.45,"rgba(255,255,255,.5)");g.addColorStop(1,"rgba(255,255,255,0)");x.fillStyle=g;x.fillRect(0,0,32,32);return new THREE.CanvasTexture(c)})();
+  const rnd=(i,k)=>hash(i*1.31+k*7.7,k*3.1+i*.17);
+  const room=i=>new V3(-1.15+2.3*rnd(i,1),.12+1.35*rnd(i,2),-.85+1.7*rnd(i,3));
+  const NS=220,sp=new Float32Array(NS*3),sb=[];for(let i=0;i<NS;i++)sb.push(room(i+500));
+  const sgm=new THREE.BufferGeometry();sgm.setAttribute("position",new THREE.BufferAttribute(sp,3));
+  const smell=new THREE.Points(sgm,new THREE.PointsMaterial({size:.09,map:spr,color:0x9b8a46,transparent:true,depthWrite:false,opacity:.8}));smell.frustumCulled=false;S.add(smell);
+  const NO=650,op=new Float32Array(NO*3),ob=[];for(let i=0;i<NO;i++)ob.push(room(i));
+  const ogm=new THREE.BufferGeometry();ogm.setAttribute("position",new THREE.BufferAttribute(op,3));
+  const oz=new THREE.Points(ogm,new THREE.PointsMaterial({size:.035,map:spr,color:0x7fe0ff,transparent:true,depthWrite:false,opacity:.9,blending:THREE.AdditiveBlending}));oz.frustumCulled=false;S.add(oz);
+  const src=new V3(.55,.3,.3),out=new V3(.6,1.0,-1.6);let tm=0;
+  return{S,PH:[.9,1.4,1.3,1.1,.8],camA:[[1.9,1.7,2.7],[-.05,.55,-.2]],camB:[[2.2,1.9,3.2],[-.05,.6,-.25]],
+    update(p,s,dt,on){if(on)tm+=dt;
+      if(p>=1&&p<=2&&on)fan.rotation.y+=dt*25;
+      const total=p===1?s*.55:p===2?.55+s*.45:p>2?1:0,mins=Math.round(30*(1-total));
+      scr.set(p===0?"30:00":p>=3?"00:00":`${String(mins).padStart(2,"0")}:00`);
+      led.material.color.set(p===1||p===2?0x6fd8ff:0x3ccb91);
+      const op1=p===0?1:p===1?1-.25*s:p===2?.75*(1-s):0;smell.material.opacity=.8*op1;smell.visible=op1>.01;
+      for(let i=0;i<NS;i++){const b=sb[i],k=i*3;sp[k]=b.x+Math.sin(tm*.4+i)*.04;sp[k+1]=b.y+Math.sin(tm*.3+i*1.7)*.03;sp[k+2]=b.z+Math.cos(tm*.35+i)*.04}
+      sgm.attributes.position.needsUpdate=true;
+      const open=p===3?ease(cl(s/.3)):p===4?1-ease(cl(s/.5)):0;sash.rotation.y=-1.25*open;
+      let vis=0;
+      for(let i=0;i<NO;i++){const k=i*3,di=i/NO*.75,b=ob[i];let v=null;
+        if(p===1){const t=cl((s-di)/.25);if(t>0)v=src.clone().lerp(b,ease(t))}
+        else if(p===2)v=b.clone();
+        else if(p===3){const t=cl((s-.15-di*.6)/.4);if(t<1)v=b.clone().lerp(out,ease(t))}
+        if(v){op[k]=v.x+Math.sin(tm*.9+i)*.03;op[k+1]=v.y+Math.cos(tm*.7+i*1.3)*.03;op[k+2]=v.z+Math.sin(tm*.8+i*.7)*.03;vis++}else{op[k]=0;op[k+1]=-99;op[k+2]=0}}
+      ogm.attributes.position.needsUpdate=true;oz.visible=vis>0}}
+}
+
+/* ================= host: tiles, playback, i18n ================= */
+const SVC=[{k:"sofa",cat:"home",from:35,build:sceneSofa,feat:1},{k:"tire",cat:"car",from:29,build:sceneTire,noBA:1},{k:"clean",cat:"home",from:90,build:sceneClean},{k:"car",cat:"car",from:35,build:sceneCar},{k:"ozone",cat:"both",from:29,build:sceneOzone,noBA:1}];
+const UNIT=6,stages=[];
+const SLUG={sofa:"huonekalujen-pesu",tire:"renkaanvaihto",clean:"kotisiivous",car:"auton-sisapesu",ozone:"otsonaattorin-vuokraus"};
+const lock='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+const grid=$("#grid");
+grid.innerHTML=SVC.map(v=>`<article id="${SLUG[v.k]}" class="tile${v.lock?" locked":""}${v.feat?" feat":""}" data-k="${v.k}">
+  <div class="view"><canvas aria-hidden="true"></canvas><span class="chip"></span>${v.lock?`<div class="lockbig" role="img"><i>${lock}</i></div>`:""}
+    <button class="x" aria-label="">×</button>
+    ${v.noBA?"":`<div class="vtabs" role="group"><button class="vt v3" aria-pressed="true">3D</button><button class="vt vp" aria-pressed="false"></button></div>
+    <div class="ba" hidden><div class="bimg bef"></div><div class="bimg aft"></div><div class="bline"><span>⇆</span></div>
+      <span class="bl bl1"></span><span class="bl bl2"></span><p class="bnote"></p><input type="range" min="0" max="100" value="50" aria-label=""></div>`}
+    <div class="hud"><div class="cap" aria-live="polite"><span class="num"></span><h4></h4><p></p></div>
+      <div class="ctl"><button class="cb pp" aria-label="Pause">❚❚</button><div class="seg"></div><button class="cb rp" aria-label="Replay">↺</button></div></div></div>
+  <div class="meta"><div class="row1"><span class="tag"></span><span class="season"></span></div><div class="row1"><h3></h3><span class="from"></span></div><p class="d"></p></div>
+  <p class="desc"></p>
+  <div class="cfgx"></div>
+  <button class="opener"></button></article>`).join("");
+
+const split=(PH,P)=>{const tot=PH.reduce((a,b)=>a+b,0),x=P*tot;let acc=0;for(let i=0;i<PH.length;i++){if(x<=acc+PH[i]||i===PH.length-1)return{p:i,s:cl((x-acc)/PH[i])};acc+=PH[i]}};
+$$(".tile").forEach((el,i)=>{const st={svc:SVC[i],el,view:$(".view",el),cv:$("canvas",el),clock:0,playing:!reduced,open:false,vis:false,sc:null,lastP:-1};stages.push(st);
+  const n=T.fi.svc[st.svc.k].ph.length;st.PHn=n;
+  $(".seg",el).innerHTML=Array.from({length:n},(_,j)=>`<button aria-label="${j+1}"><i><b></b></i></button>`).join("");
+  $(".opener",el).onclick=()=>openTile(st);$(".x",el).onclick=()=>closeTile(st);
+  if(!st.svc.noBA){$(".v3",el).onclick=()=>{showPhotos(st,false);if(st.clock>=st.total)st.clock=0;setPlay(st,true)};$(".vp",el).onclick=()=>showPhotos(st,true);
+  $(".ba input",el).addEventListener("input",e=>{const v=e.target.value;$(".aft",el).style.clipPath=`inset(0 0 0 ${v}%)`;$(".bline",el).style.left=v+"%"})}
+  $(".pp",el).onclick=()=>{if(st.total&&st.clock>=st.total)st.clock=0;setPlay(st,!st.playing)};
+  $(".rp",el).onclick=()=>{st.clock=0;setPlay(st,true)};
+  const jump=j=>{if(!st.sc)return;const PH=st.sc.PH;st.clock=PH.slice(0,j).reduce((a,b)=>a+b,0)*UNIT+.01;setPlay(st,true)};
+  $(".seg",el).addEventListener("click",e=>{const b=e.target.closest("button");if(b)jump([...b.parentElement.children].indexOf(b))});
+});
+function showPhotos(st,on){if(st.svc.noBA){st.photo=false;return}st.photo=on;st.el.classList.toggle("photo",on);$(".ba",st.el).hidden=!on;$(".v3",st.el).setAttribute("aria-pressed",!on);$(".vp",st.el).setAttribute("aria-pressed",on);if(on)setPlay(st,false)}
+function setPlay(st,v){st.playing=v;const b=$(".pp",st.el);b.textContent=v?"❚❚":"▶";b.setAttribute("aria-label",v?"Pause":"Play")}
+function flip(fn){if(reduced){fn();return}const els=$$(".tile"),r0=new Map(els.map(e=>[e,e.getBoundingClientRect()]));fn();
+  els.forEach(e=>{const a=r0.get(e),b=e.getBoundingClientRect(),dx=a.left-b.left,dy=a.top-b.top;if(Math.abs(dx)<1&&Math.abs(dy)<1)return;
+    e.style.transition="none";e.style.transform=`translate(${dx}px,${dy}px)`;e.getBoundingClientRect();
+    e.style.transition="transform .5s cubic-bezier(.2,.8,.2,1)";e.style.transform="";setTimeout(()=>{e.style.transition=""},540)})}
+function openTile(st){if(st.svc.lock||st.open)return;
+  flip(()=>{stages.forEach(o=>{if(o!==st&&o.open)closeTile(o,true,true)});st.open=true;st.el.classList.add("open")});
+  try{history.replaceState(null,"","#"+SLUG[st.svc.k])}catch(e){}
+  if(st.clock>=st.total)st.clock=0;setPlay(st,true);st.lastP=-1;
+  setTimeout(()=>{size(st);const t=st.el.getBoundingClientRect().top;if(t<0||t>innerHeight*.3)scrollTo({top:scrollY+t-12,behavior:reduced?"auto":"smooth"})},540)}
+function closeTile(st,quiet,noflip){const go=()=>{showPhotos(st,false);st.autoPh=0;st.open=false;st.el.classList.remove("open");setPlay(st,!reduced);st.lastP=-1};
+  try{history.replaceState(null,"",location.pathname+location.search)}catch(e){}
+  if(noflip)go();else flip(go);
+  if(!quiet)setTimeout(()=>{const r=st.el.getBoundingClientRect();if(r.top<0)scrollTo({top:scrollY+r.top-12,behavior:reduced?"auto":"smooth"})},540)}
+
+let threeState=0;
+function loadThree(){if(threeState)return;threeState=1;const sc=document.createElement("script");sc.src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";sc.async=true;
+  sc.onload=()=>{threeState=2;stages.forEach(st=>{if(st.vis)init(st)})};sc.onerror=()=>{threeState=3;stages.forEach(st=>{if(st.vis)init(st)})};document.head.appendChild(sc)}
+function init(st){if(st.sc||st.fail||st.frozen)return;
+  if(!window.THREE){if(threeState===3){st.fail=true;st.view.insertAdjacentHTML("beforeend",`<div class="nogl">${T[lang].nogl}</div>`)}else loadThree();return}
+  try{V3=THREE.Vector3;Q=THREE.Quaternion;
+    const R=st.R=new THREE.WebGLRenderer({canvas:st.cv,antialias:true,alpha:true});R.outputEncoding=THREE.sRGBEncoding;R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=.82;
+    R.shadowMap.enabled=true;R.shadowMap.type=THREE.PCFSoftShadowMap;
+    st.sc=st.svc.build(R);st.total=st.sc.PH.reduce((a,b)=>a+b,0)*UNIT;st.cam=new THREE.PerspectiveCamera(34,1,.05,40);
+    st.cp=new V3(...st.sc.camA[0]);st.cl=new V3(...st.sc.camA[1]);
+    size(st);if(st.svc.lock)freeze(st)}
+  catch(e){st.fail=true;st.view.insertAdjacentHTML("beforeend",`<div class="nogl">${T[lang].nogl}</div>`)}}
+function freeze(st){st.clock=st.total*.45;st.playing=false;const {p,s}=split(st.sc.PH,.45);for(let i=0;i<40;i++)st.sc.update(p,s,.05,false);
+  st.cam.position.copy(st.cp);st.cam.lookAt(st.cl);st.R.render(st.sc.S,st.cam);st.frozen=true;
+  try{const url=st.cv.toDataURL("image/jpeg",.86),im=new Image();im.className="snap";im.alt="";im.src=url;st.view.insertBefore(im,st.cv);st.cv.style.display="none";
+    st.R.dispose();st.R.forceContextLoss();st.R=null;st.sc=null}catch(e){}}
+function size(st){if(!st.R)return;const w=st.view.clientWidth,h=st.view.clientHeight;if(!w||!h)return;
+  st.R.setPixelRatio(Math.min(st.open?2:1.5,devicePixelRatio||1));st.R.setSize(w,h,false);const a=w/h;st.cam.aspect=a;st.fovT=a<.8?66:a<1.6?48:38;if(!st.fovInit){st.cam.fov=st.fovT;st.fovInit=1}st.cam.updateProjectionMatrix();if(st.frozen){st.cam.position.copy(st.cp);st.cam.lookAt(st.cl);st.R.render(st.sc.S,st.cam)}}
+const io=new IntersectionObserver(es=>es.forEach(e=>{const st=stages.find(o=>o.view===e.target);st.vis=e.isIntersecting;if(st.vis)init(st)}),{rootMargin:"150px"});
+const ro=new ResizeObserver(es=>es.forEach(e=>{const st=stages.find(o=>o.view===e.target);size(st)}));
+stages.forEach(st=>{io.observe(st.view);ro.observe(st.view)});
+
+function hud(st,p,s){const L=T[lang].svc[st.svc.k],el=st.el;
+  if(p!==st.lastP){st.lastP=p;$(".chip",el).textContent=`${p+1}/${st.PHn} · ${L.ph[p][0]}`;
+    $(".num",el).textContent=`${T[lang].step} ${String(p+1).padStart(2,"0")} / ${String(st.PHn).padStart(2,"0")}`;$("h4",el).textContent=L.ph[p][0];$(".cap p",el).textContent=L.ph[p][1];
+    $$(".steps li",el).forEach((li,j)=>{li.classList.toggle("on",j===p);li.classList.toggle("done",j<p)})}
+  if(st.open)$$(".seg b",el).forEach((b,j)=>b.style.width=(j<p?100:j===p?s*100:0)+"%")}
+let last=performance.now();
+const tmpP=()=>new THREE.Vector3();
+const FRAME=1000/45;let lastR=0;
+function loop(now){requestAnimationFrame(loop);if(document.hidden||now-lastR<FRAME-2)return;lastR=now;const dt=Math.min(.05,(now-last)/1000);last=now;
+  for(const st of stages){if(!st.vis||!st.sc||st.frozen||!st.R||st.photo)continue;
+    if(st.playing){st.clock+=dt;
+      if(st.open){if(st.clock>=st.total){st.clock=st.total;setPlay(st,false);if(!st.autoPh&&!st.svc.noBA){st.autoPh=1;setTimeout(()=>{if(st.open&&!st.playing)showPhotos(st,true)},1400)}}}
+      else if(st.clock>st.total+2.5&&!st.fading){st.fading=1;st.cv.classList.add("fade");setTimeout(()=>{st.clock=0;st.cv.classList.remove("fade");st.fading=0},480)}}
+    const {p,s}=split(st.sc.PH,Math.min(1,st.clock/st.total));
+    st.sc.update(p,s,dt,st.playing);hud(st,p,s);
+    const A=st.sc.camA,B=st.sc.camB,k=p===st.PHn-1?ease(s):0;
+    const tp=new V3(...A[0]).lerp(new V3(...B[0]),k),tl=new V3(...A[1]).lerp(new V3(...B[1]),k),m=Math.min(1,dt*2.5);
+    st.cp.lerp(tp,m);st.cl.lerp(tl,m);st.cam.position.set(st.cp.x+Math.sin(now/4000)*.04,st.cp.y,st.cp.z);st.cam.lookAt(st.cl);
+    if(st.fovT&&Math.abs(st.cam.fov-st.fovT)>.05){st.cam.fov+=(st.fovT-st.cam.fov)*Math.min(1,dt*6);st.cam.updateProjectionMatrix()}
+    st.R.render(st.sc.S,st.cam);if(!st.shown){st.shown=1;st.cv.classList.add("on")}}}
+requestAnimationFrame(loop);
+
+
+/* ================= constructor (who does it + checkboxes) ================= */
+const C={
+fi:{whoT:"Kuka tekee?",me:"Minä itse",meD:"Vuokraa laite ja aineet",pro:"Ammattilainen",proD:"Tulemme ja teemme kaiken",
+ kitL:"Peruspaketti – aina mukana",extraL:"Lisäaineet ja työkalut",getL:"Nouto",whatL:"Mitä tehdään?",dirtL:"Erityistä?",sizeL:"Auton koko",homeL:"Asunnon koko",hoursL:"Tunnit",perH:"€/h",hU:" h",inclL:"Sisältyy aina",addL:"Lisäpalvelut",ozoneNote:"Turvallisuus: ihmiset, eläimet ja kasvit ulos, tuuletus 1–2 h ennen paluuta.",distL:"Matka",
+ inc:"mukana",perDay:"/ vrk",total:"Yhteensä",totalP:"Arvioitu hinta",priceNote:"Hinta voi vielä tarkentua WhatsAppissa, jos jotain selviää lisää.",goWA:"Siirry WhatsAppiin",typeL:"Siivouksen tyyppi",areaL:"Pinta-ala",book:"Varaa WhatsAppilla",bookT:"Hae paikkaa",min:"Vähimmäistilaus",
+ ownNote:"Teetkö töitä omille asiakkaillesi? Sama vuorokausihinta – lisää vain Y-tunnuksesi vuokrasopimukseen.",payNote:"Maksu kortilla palautuksen yhteydessä käytön mukaan. Ei takuumaksua – tarvitsemme henkilöllisyystodistuksen, henkilötunnuksen ja vuokrasopimuksen. Kuvaamme laitteen luovutuksessa ja palautuksessa.",carNote:"Hintaan sisältyy työ, aineet, laitteet ja matka. Kotitalousvähennys ei koske auton sisäpesua.",seatsL:"Montako paikkaa?",
+ proNote:"Hintaan sisältyy työ, aineet, laitteet ja matka. Kotitalousvähennys koskee työn osuutta.",
+ tireNote:"Vaihdamme vanteille asennetut renkaat. Tasapainotusta ei tehdä paikan päällä.",
+ testT:"Testiasiakkaaksi?",testD:"Pienempi hinta, kun aikataulu joustaa",termsT:"Testiasiakkaan ehdot",
+ terms:["Teemme vapaa-aikanamme, hakemuksen perusteella – päivää ei luvata.","Voimme kokeilla uutta ainetta tai menetelmää.","Otamme ennen/jälkeen-kuvia mainontaan (ei kasvoja eikä osoitetta).","Paikkoja on vähän, vastaamme kaikkiin hakemuksiin.","Pyydämme lyhyen arvostelun Googleen työn jälkeen.","Testihinta vain ensimmäisille asiakkaille."]},
+en:{whoT:"Who does it?",me:"I do it myself",meD:"Rent the machine and chemicals",pro:"A professional",proD:"We come and do everything",
+ kitL:"Base kit – always included",extraL:"Extra chemicals and tools",getL:"Pick-up",whatL:"What do we do?",dirtL:"Anything special?",sizeL:"Car size",homeL:"Home size",hoursL:"Hours",perH:"€/h",hU:" h",inclL:"Always included",addL:"Extras",ozoneNote:"Safety: people, pets and plants out; air the space for 1–2 h before returning.",distL:"Distance",
+ inc:"included",perDay:"/ day",total:"Total",totalP:"Estimated price",priceNote:"The price may still be adjusted in WhatsApp if new details come up.",goWA:"Continue in WhatsApp",typeL:"Type of cleaning",areaL:"Floor area",book:"Book on WhatsApp",bookT:"Send a request",min:"Minimum order",
+ ownNote:"Working for your own clients? Same daily price – just add your business ID to the rental agreement.",payNote:"Pay by card on return, for what you used. No deposit – we need an ID, your Finnish personal identity code and a rental agreement. We photograph the equipment at handover and return.",carNote:"The price includes labour, chemicals, equipment and travel. The household tax credit does not apply to car interior cleaning.",seatsL:"How many seats?",
+ proNote:"The price includes labour, chemicals, equipment and travel. The household tax credit applies to the labour part.",
+ tireNote:"We swap wheels already mounted on rims. No balancing on site.",
+ testT:"Become a test client?",testD:"Lower price if your schedule is flexible",termsT:"Test client terms",
+ terms:["We do it in our free time, by request – no date is promised.","We may try a new product or method.","We take before/after photos for advertising (no faces or address).","Places are few; we answer every request.","We ask for a short Google review after the job.","Test price for the first customers only."]},
+ru:{whoT:"Кто будет делать?",me:"Я сам",meD:"Арендую аппарат и химию",pro:"Профессионал",proD:"Приедем и сделаем всё",
+ kitL:"Базовый комплект – всегда включён",extraL:"Доп. химия и инструменты",getL:"Получение",whatL:"Что делаем?",dirtL:"Особое?",sizeL:"Размер машины",homeL:"Размер жилья",hoursL:"Часы",perH:"€/ч",hU:" ч",inclL:"Всегда входит",addL:"Дополнительно",ozoneNote:"Безопасность: люди, животные и растения выходят, проветривание 1–2 ч перед возвращением.",distL:"Расстояние",
+ inc:"включено",perDay:"/ сутки",total:"Итого",totalP:"Примерная сумма",priceNote:"Цена может уточниться в WhatsApp, если выяснятся детали.",goWA:"Перейти в WhatsApp",typeL:"Тип уборки",areaL:"Площадь",book:"Забронировать в WhatsApp",bookT:"Оставить заявку",min:"Минимальный заказ",
+ ownNote:"Работаете на своих клиентов? Цена та же – просто укажите свой Y-tunnus в договоре аренды.",payNote:"Оплата картой при возврате, по факту использованного. Без залога – нужны документ, henkilötunnus и договор аренды. Фотографируем оборудование при выдаче и возврате.",carNote:"В цену входят работа, химия, оборудование и дорога. Вычет kotitalousvähennys на салон автомобиля не действует.",seatsL:"Сколько мест?",
+ proNote:"В цену входят работа, химия, оборудование и дорога. Вычет kotitalousvähennys действует на долю работы.",
+ tireNote:"Меняем колёса, уже собранные на дисках. Балансировку на месте не делаем.",
+ testT:"Стать тест-клиентом?",testD:"Цена ниже, если вы не спешите",termsT:"Условия для тест-клиента",
+ terms:["Делаем в свободное время, по заявке – дату не обещаем.","Можем попробовать новое средство или метод.","Делаем фото до/после для рекламы (без лиц и адреса).","Мест мало, отвечаем на каждую заявку.","Просим короткий отзыв в Google после работы.","Тест-цена только для первых клиентов."]}};
+const LI=()=>({fi:0,en:1,ru:2})[lang],tr=x=>Array.isArray(x)?x[LI()]:x;
+const AX9={n:"Nilfisk AX9 CAR",d:["Ammattilaisen tekstiilipesuri, 9 l säiliö","Professional upholstery extractor, 9 l tank","Профессиональный моющий пылесос, бак 9 л"],p:35};
+const RM={n:"Kärcher RM 760 × 2",d:["Tabletit säiliöön","Tablets for the tank","Таблетки в бак"]},POL={n:"Koch-Chemie Pol Star",d:["Kangas, nahka, alcantara","Fabric, leather, alcantara","Ткань, кожа, алькантара"]};
+const KIT={n:["Harja, suojalasit, käsineet","Brush, goggles, gloves","Щётка, очки, перчатки"],d:["Ohje suomeksi, englanniksi ja venäjäksi","Instructions in Finnish, English and Russian","Инструкция на финском, английском и русском"]};
+const TABS={id:"tabs",ty:"qty",n:["Lisätabletit RM 760","Extra RM 760 tablets","Доп. таблетки RM 760"],d:["2 € / kpl, käytön mukaan","€2 each, pay for what you use","2 € / шт, по факту"],p:2,max:14};
+const DRILL={id:"drill",ty:"chk",n:["Porakoneen harjasarja","Drill brush set","Насадки-щётки на дрель"],d:["Pehmeä, keski, kova – oma porakone","Soft, medium, hard – bring your own drill","Мягкая, средняя, жёсткая – нужна своя дрель"],p:5};
+const GET={l:"getL",radio:1,items:[{id:"g0",n:["Nouto itse","I pick it up","Самовывоз"],p:0},{id:"g1",n:["Toimitus alle 10 km","Delivery under 10 km","Доставка до 10 км"],p:10},{id:"g2",n:["Toimitus 10–30 km","Delivery 10–30 km","Доставка 10–30 км"],p:20}]};
+const DIST={l:"distL",radio:1,items:[{id:"k0",n:["Kajaanin alue","Kajaani area","Каяни"],p:0},{id:"k1",n:["10–30 km","10–30 km","10–30 км"],p:15},{id:"k2",n:["30–60 km","30–60 km","30–60 км"],p:30}]};
+const PET={id:"pet",ty:"chk",n:["Lemmikkien karvat / haju","Pet hair / odour","Шерсть / запах животных"],p:19,t:10,plus:1};
+const CFG={
+ sofa:{kv:1,me:{base:AX9,inc:[RM,POL,KIT],sec:[{l:"extraL",items:[
+    {id:"pet",ty:"chk",n:"Simple Solution",d:["Lemmikkien virtsa ja hajut","Pet urine and odours","Моча и запахи животных"],p:4},
+    {id:"spot",ty:"chk",n:"Fleckenwasser",d:["Vanhat tahrat: kahvi, viini, rasva","Old stains: coffee, wine, grease","Старые пятна: кофе, вино, жир"],p:4},
+    {id:"ink",ty:"chk",n:"Tinten-Ex",d:["Muste ja kuulakärkikynä","Ink and ballpoint pen","Чернила и ручка"],p:4},DRILL,TABS]},GET],note:["ownNote","payNote"]},
+  pro:{sec:[{l:"whatL",items:[
+    {id:"s2",ty:"qty",n:["2-istuttava sohva","2-seat sofa","Диван 2-местный"],p:119,t:75,def:1},
+    {id:"s3",ty:"qty",n:["3-istuttava sohva","3-seat sofa","Диван 3-местный"],p:145,t:89},
+    {id:"sc",ty:"qty",n:["Kulmasohva","Corner sofa","Угловой диван"],p:189,t:115},
+    {id:"ch",ty:"qty",n:["Nojatuoli","Armchair","Кресло"],p:69,t:49},
+    {id:"ma",ty:"qty",n:["Patja (2 hlö)","Mattress (double)","Матрас (2-сп.)"],p:99,t:65}]},
+    {l:"dirtL",items:[PET,{id:"stain",ty:"inc",n:["Vanhoja tahroja","Old stains","Старые пятна"]}]},DIST],min:[89,55],note:"proNote",test:1}},
+ car:{season:1,me:{base:AX9,inc:[RM,POL,KIT],sec:[{l:"extraL",items:[
+    {id:"plast",ty:"chk",n:["Muovipintojen puhdistusaine","Interior plastics cleaner","Очиститель пластика салона"],d:["Kojelauta, ovet, konsoli","Dashboard, doors, console","Торпеда, двери, консоль"],p:4},
+    {id:"brs",ty:"chk",n:["Detailing-siveltimet","Detailing brushes","Кисти для деталей"],d:["Saumat, painikkeet, tuuletusritilät","Seams, buttons, air vents","Швы, кнопки, дефлекторы"],p:4},
+    {id:"mf",ty:"chk",n:["Mikrokuituliinat × 5","Microfibre cloths × 5","Микрофибра × 5"],p:3},
+    {id:"pet",ty:"chk",n:"Simple Solution",d:["Lemmikkien hajut","Pet odours","Запахи животных"],p:4},DRILL,TABS]},GET],note:["ownNote","payNote"]},
+  pro:{sec:[{l:"seatsL",radio:1,base:1,items:[{id:"z5",n:["5 paikkaa (henkilöauto, farmari, SUV)","5 seats (car, estate, SUV)","5 мест (легковая, универсал, SUV)"],p:159,t:99},{id:"z7",n:["7 paikkaa (tila-auto, 3. penkkirivi)","7 seats (MPV, 3rd row)","7 мест (минивэн, 3-й ряд)"],p:199,t:129}]},
+    {l:"inclL",items:[{id:"i1",ty:"inc",n:["Penkit ja verhoilut – kangas ja nahka","Seats and upholstery – fabric and leather","Сиденья и обивка – ткань и кожа"]},{id:"i2",ty:"inc",n:["Kaikki muovit, kojelauta ja konsoli","All plastics, dashboard and console","Весь пластик, торпеда и консоль"]},{id:"i3",ty:"inc",n:["Ovet, kahvat ja käsinojat","Doors, handles and armrests","Двери, ручки и подлокотники"]},{id:"i5",ty:"inc",n:["Lattia ja matot","Floor and mats","Пол и коврики"]},{id:"i6",ty:"inc",n:["Ikkunat sisältä","Windows inside","Стёкла изнутри"]}]},
+    {l:"addL",items:[{id:"roof",ty:"chk",n:["Katon pesu","Headliner","Потолок"],p:29,t:19,plus:1},{id:"boot",ty:"chk",n:["Tavaratila","Boot","Багажник"],p:19,t:12,plus:1},{id:"pet",ty:"chk",n:["Eläinkarvat","Pet hair","Шерсть животных"],p:25,t:15,plus:1},{id:"lth",ty:"chk",n:["Nahan hoito","Leather care","Уход за кожей"],p:25,t:15,plus:1},{id:"stn",ty:"chk",n:["Vaikeat tahrat","Tough stains","Сложные пятна"],p:15,t:10,plus:1},{id:"oz",ty:"chk",n:["Hajunpoisto otsonilla","Ozone odour removal","Удаление запаха озоном"],p:29,t:19,plus:1}]},DIST],min:[159,99],note:"carNote",test:1}},
+ tire:{me:{base:{n:["Rengastyökalut","Tyre tools","Набор для замены колёс"],d:["Hydraulinen tunkki, akkukäyttöinen mutterinväännin, momenttiavain","Hydraulic jack, cordless impact wrench, torque wrench","Гидравлический домкрат, аккумуляторный гайковёрт, динамометрический ключ"],p:29},
+    inc:[{n:["Pukit × 2","Axle stands × 2","Подставки под машину × 2"],d:["Turvallisuus – älä koskaan työskentele auton alla pelkän tunkin varassa.","Safety – never work under the car on the jack alone.","Безопасность – никогда не работать под машиной на одном домкрате."]},{n:["Hylsysarja ja käsineet","Socket set and gloves","Набор головок и перчатки"]},{n:["Ohje ja kiristysmomentit","Instructions and torque values","Инструкция и моменты затяжки"]}],
+    sec:[{l:"extraL",items:[{id:"bags",ty:"chk",n:["Rengaspussit × 4","Tyre bags × 4","Пакеты для шин × 4"],p:5}]},GET],note:["ownNote","payNote"]},
+  pro:{sec:[{l:"whatL",radio:1,base:1,items:[{id:"chg",n:["Vaihto, 4 pyörää","Change, 4 wheels","Замена 4 колёс"],d:["Haku varastosta, kanto, vaihto, momenttiavain, paineet","Fetch from storage, carry, change, torque, pressure","Забрать со склада, донести, поменять, затяжка, давление"],p:69,t:55}]},
+    {l:"addL",items:[{id:"wash",ty:"chk",n:["Renkaiden pesu","Wheel wash","Мойка колёс"],p:15,t:10,plus:1},{id:"bags",ty:"chk",n:["Rengaspussit × 4","Tyre bags × 4","Пакеты для шин × 4"],p:5,t:5,plus:1}]},DIST],min:[69,55],note:"tireNote",test:1}},
+ clean:{kv:1,pro:{sec:[{l:"typeL",radio:1,base:1,items:[{id:"c1",n:["Kotisiivous","Home cleaning","Обычная уборка"],h:45,th:29},{id:"c2",n:["Siivous juhlien jälkeen","After-party cleaning","Уборка после вечеринки"],h:65,noTest:1}]},
+    {l:"hoursL",items:[{id:"hrs",ty:"hours",n:["Kuinka monta tuntia?","How many hours?","Сколько часов?"],def:2,min:2,max:8,step:1,hint:["Etkö ole varma? Lähetä kuvat WhatsAppissa, niin arvioimme ajan.","Not sure? Send photos on WhatsApp and we'll estimate the time.","Не знаете, сколько нужно? Пришлите фото в WhatsApp – оценим время."]}]},DIST],min:[90,58],note:"proNote",test:1}},
+ ozone:{me:{base:{n:["Otsonaattori","Ozone generator","Озонатор"],d:["Ammattilaite ajastimella","Professional unit with timer","Профессиональный, с таймером"],p:29},
+    inc:[{n:["Ajastin ja ohje","Timer and instructions","Таймер и инструкция"]},{n:["Varoituskyltti oveen","Warning sign for the door","Табличка на дверь"]}],sec:[{l:"getL",radio:1,items:[{id:"g0",n:["Nouto itse","I pick it up","Самовывоз"],p:0},{id:"g1",n:["Tuomme ja haemme, alle 10 km","We deliver and collect, under 10 km","Привезём и заберём, до 10 км"],p:15},{id:"g2",n:["Tuomme ja haemme, 10–30 km","We deliver and collect, 10–30 km","Привезём и заберём, 10–30 км"],p:25}]}],note:["ownNote","payNote","ozoneNote"]}}};
+const SEASON=["Vain kesällä, kun ulkona on väh. +15 °C.","Summer only, when it's at least +15 °C outside.","Только летом, когда на улице от +15 °C."];
+function cstate(k){if(!CFG[k])return null;const c=CFG[k],st={who:c.me?"me":"pro",test:false,chk:new Set(),qty:{},radio:{}};
+  ["me","pro"].forEach(m=>{if(!c[m])return;c[m].sec.forEach((sec,i)=>{if(sec.radio)st.radio[m+i]=sec.items[0].id;sec.items.forEach(it=>{if(it.ty==="qty"||it.ty==="area"||it.ty==="hours")st.qty[m+it.id]=it.def||0;if(it.ty==="chk"&&it.def)st.chk.add(m+it.id)})})});return st}
+const eur=v=>v+" €";
+const fr=v=>String(v).replace(".",lang==="en"?".":",");
+function priceHTML(it,test,plus){if(it.h!=null){const u=C[lang].perH;if(test&&it.th!=null)return`<span class="pr drop"><s>${it.h} ${u}</s>${it.th} ${u}</span>`;return`<span class="pr">${it.h} ${u}</span>`}
+  if(it.r!=null){if(test&&it.tr!=null)return`<span class="pr drop"><s>${fr(it.r)} €/m²</s>${fr(it.tr)} €/m²</span>`;return`<span class="pr">${fr(it.r)} €/m²</span>`}
+  if(it.ty==="inc")return`<span class="pr inc">${C[lang].inc}</span>`;
+  const pre=plus?"+":"";if(test&&it.t!=null&&it.t!==it.p)return`<span class="pr drop"><s>${pre}${eur(it.p)}</s>${pre}${eur(it.t)}</span>`;return`<span class="pr">${it.p?pre+eur(test&&it.t!=null?it.t:it.p):(it.p===0?eur(0):"")}</span>`}
+function renderCfg(st){if(!st.c||st.svc.lock)return;const k=st.svc.k,c=CFG[k],L=C[lang],S=st.c,box=$(".cfgx",st.el),m=S.who,M=c[m];
+  let h=c.me&&c.pro?`<h3>${L.whoT}</h3>`:"";
+  if(c.me&&c.pro)h+=`<div class="who"><button data-who="me" aria-pressed="${m==="me"}"><span>${L.me}</span><small>${L.meD}</small></button><button data-who="pro" aria-pressed="${m==="pro"}" class="${m==="me"?"blink":""}"><span>${L.pro}</span><small>${L.proD}</small></button></div>`;
+  if(c.season)h+=`<p class="warn">${tr(SEASON)}</p>`;
+  if(m==="me"){h+=`<span class="label">${L.kitL}</span><div class="card"><div class="r"><div class="txt"><div class="t">${tr(M.base.n)}</div><div class="dd">${tr(M.base.d)}</div></div><span class="pr">${eur(M.base.p)}<span class="pd">${L.perDay}</span></span></div>`+
+    M.inc.map(it=>`<div class="r"><input type="checkbox" checked disabled aria-label="${tr(it.n)}"><div class="txt"><div class="t">${tr(it.n)}</div>${it.d?`<div class="dd">${tr(it.d)}</div>`:""}</div><span class="pr inc">${L.inc}</span></div>`).join("")+`</div>`}
+  M.sec.forEach((sec,i)=>{h+=`<span class="label">${L[sec.l]}</span><div class="card">`+sec.items.map(it=>{const id=m+it.id,nm=tr(it.n),dd=it.d?`<div class="dd">${tr(it.d)}</div>`:"";
+    if(sec.radio&&it.noTest&&S.test&&m==="pro")return"";
+    if(sec.radio)return`<label class="r"><input type="radio" name="${k}-${m}${i}" value="${it.id}" data-sec="${m}${i}" ${S.radio[m+i]===it.id?"checked":""}><div class="txt"><div class="t">${nm}</div>${dd}</div>${priceHTML(it,S.test&&m==="pro",!sec.base)}</label>`;
+    if(it.ty==="inc")return`<div class="r"><input type="checkbox" checked disabled aria-label="${nm}"><div class="txt"><div class="t">${nm}</div>${dd}</div>${priceHTML(it)}</div>`;
+    if(it.ty==="hours")return`<div class="r"><div class="txt"><div class="t">${nm}</div>${it.hint?`<div class="dd">${tr(it.hint)}</div>`:""}</div><div class="stp" data-q="${id}" data-min="${it.min}" data-max="${it.max}" data-step="${it.step}" data-unit="${L.hU}"><button aria-label="−">−</button><output style="width:52px">${S.qty[id]}${L.hU}</output><button aria-label="+">+</button></div></div>`;
+    if(it.ty==="area")return`<div class="r"><div class="txt"><div class="t">${nm}</div></div><div class="stp" data-q="${id}" data-min="${it.min}" data-max="${it.max}" data-step="${it.step}" data-unit=" m²"><button aria-label="−">−</button><output style="width:64px">${S.qty[id]} m²</output><button aria-label="+">+</button></div></div>`;
+    if(it.ty==="qty")return`<div class="r"><div class="txt"><div class="t">${nm}</div>${dd}</div>${priceHTML(it,S.test&&m==="pro",m==="me")}<div class="stp" data-q="${id}" data-max="${it.max||9}"><button aria-label="−">−</button><output>${S.qty[id]}</output><button aria-label="+">+</button></div></div>`;
+    return`<label class="r"><input type="checkbox" data-c="${id}" ${S.chk.has(id)?"checked":""}><div class="txt"><div class="t">${nm}</div>${dd}</div>${priceHTML(it,S.test&&m==="pro",m==="me"||it.plus)}</label>`}).join("")+`</div>`});
+  if(M.min)h+=`<p class="note">${L.min}: ${eur(M.min[S.test?1:0])}</p>`;
+  h+=[].concat(M.note).map(n=>`<p class="note">${L[n]}</p>`).join("");
+  if(M.test)h+=`<button class="testbtn" aria-pressed="${S.test}"><span><span>${L.testT}</span><em>${L.testD}</em></span><span style="font-size:20px">↓</span></button>`+(S.test?`<div class="card terms drop"><b>${L.termsT}</b><ul>${L.terms.map(t=>`<li>${t}</li>`).join("")}</ul></div>`:"");
+  h+=`<div class="tot${S.touched?" drop":" hide"}"><div><span class="label">${L.totalP}</span><b class="sum"></b><small class="pn">${L.priceNote}</small>${c.kv&&m==="pro"?`<a class="kvl" href="#kv">${K[lang].kvLink}</a>`:""}</div><a class="btn pri cta" target="_blank" rel="noopener"></a></div>`;
+  box.innerHTML=h;calcCfg(st)}
+function calcCfg(st){const k=st.svc.k,c=CFG[k],L=C[lang],S=st.c,m=S.who,M=c[m],test=S.test&&m==="pro",val=it=>test&&it.t!=null?it.t:it.p;
+  let sum=0,area=0,rate=0,hrs=0,rateH=0;const lines=[];
+  if(m==="me"){sum+=M.base.p;lines.push(tr(M.base.n)+" + "+M.inc.slice(0,2).map(x=>tr(x.n)).join(" + "))}
+  M.sec.forEach((sec,i)=>sec.items.forEach(it=>{const id=m+it.id;
+    if(sec.radio){if(S.radio[m+i]===it.id){if(it.h!=null)rateH=test&&it.th!=null?it.th:it.h;else if(it.r!=null)rate=test&&it.tr!=null?it.tr:it.r;else sum+=val(it);lines.push(tr(it.n))}}
+    else if(it.ty==="hours"){hrs=S.qty[id];lines.push(hrs+L.hU)}
+    else if(it.ty==="area"){area=S.qty[id];lines.push(area+" m²")}
+    else if(it.ty==="qty"){const q=S.qty[id];if(q){sum+=q*val(it);lines.push(`${tr(it.n)} ×${q}`)}}
+    else if(it.ty==="chk"&&S.chk.has(id)){sum+=val(it);lines.push(tr(it.n))}}));
+  if(area&&rate)sum+=Math.round(area*rate/5)*5;
+  if(hrs&&rateH)sum+=hrs*rateH;
+  if(M.min)sum=Math.max(sum,M.min[test?1:0]);
+  if(test)lines.push("TEST");
+  const box=$(".cfgx",st.el);$(".sum",box).textContent=eur(sum);const a=$(".cta",box);a.textContent=L.goWA;
+  a.href=`https://wa.me/${WA}?text=`+encodeURIComponent(`KaiMobil – ${T[lang].svc[k].t} (${m==="me"?L.me:L.pro}): ${lines.join(", ")} – ${eur(sum)}`)}
+stages.forEach(st=>{st.c=cstate(st.svc.k);if(!st.c)return;const box=$(".cfgx",st.el);
+  const touch=()=>{if(!st.c.touched){st.c.touched=true;const t=$(".tot",box);if(t){t.classList.remove("hide");t.classList.add("drop")}}};
+  box.addEventListener("click",e=>{const w=e.target.closest("[data-who]");if(w){st.c.who=w.dataset.who;st.c.touched=true;renderCfg(st);return}
+    if(e.target.closest(".testbtn")){st.c.test=!st.c.test;st.c.touched=true;
+      if(st.c.test){const M=CFG[st.svc.k].pro;if(M)M.sec.forEach((sec,i)=>{if(!sec.radio)return;const cur=sec.items.find(x=>x.id===st.c.radio["pro"+i]);if(cur&&cur.noTest)st.c.radio["pro"+i]=sec.items.find(x=>!x.noTest).id})}
+      renderCfg(st);return}
+    const b=e.target.closest(".stp button");if(b){const sp=b.parentElement,id=sp.dataset.q,stp=+(sp.dataset.step||1),d=b.textContent==="+"?stp:-stp;st.c.qty[id]=Math.max(+(sp.dataset.min||0),Math.min(+sp.dataset.max,st.c.qty[id]+d));$("output",sp).textContent=st.c.qty[id]+(sp.dataset.unit||"");touch();calcCfg(st)}});
+  box.addEventListener("change",e=>{const t=e.target;if(t.dataset.c){t.checked?st.c.chk.add(t.dataset.c):st.c.chk.delete(t.dataset.c)}if(t.dataset.sec)st.c.radio[t.dataset.sec]=t.value;touch();calcCfg(st)})});
+
+/* ================= kotitalousvähennys (2026: 40 % of labour, max 2 100 €/person, own share 150 €/year) ================= */
+const K={
+fi:{kvL:"Verovähennys",kvT:"Kotitalousvähennys",kvD:"Kun teetät kotisi töitä yritykseltä, saat 40 % työn osuudesta takaisin veroissa – vuonna 2026 enintään 2 100 € henkilöä kohden. Omavastuu on 150 € vuodessa, ja puolisot saavat vähennyksen kumpikin erikseen.",
+ okT:"Vähennys koskee",noT:"Ei vähennystä",ok:["Huonekalujen pesu kotonasi (ammattilainen, työn osuus)","Kotisiivous"],no:["Auton sisäpesu ja renkaanvaihto","Laitteiden ja otsonaattorin vuokraus"],
+ workL:"Työn osuus meidän laskulla",workD:"Työn osuus näkyy laskussa erikseen.",otherL:"Muut kotitaloustyöt tänä vuonna",otherD:"Esim. siivous tai remontti – omavastuu 150 € on yhteinen kaikille töille.",
+ persL:"Kuka maksaa",p1:"Yksi henkilö",p2:"Kaksi puolisoa",resL:"Vähennys yhteensä",netL:"Meidän työ vähennyksen jälkeen",
+ hint0:"Vähennystä ei vielä kerry: omavastuu täyttyy, kun työn osuus on yli 375 € vuodessa henkilöä kohden.",hintOk:"Tästä {x} € tulee meidän työstä.",
+ disc:"Arvio, ei veroneuvontaa. Lopullisen päätöksen tekee Verohallinto. Lähde: vero.fi, tiedote 13.10.2026.",kvLink:"Kotitalousvähennys – laske hyöty ↓"},
+en:{kvL:"Tax credit",kvT:"Household tax credit",kvD:"When you buy home services from a company, 40% of the labour cost comes back in tax – up to €2,100 per person in 2026. There is a €150 own share per year, and spouses each get their own credit.",
+ okT:"Eligible",noT:"Not eligible",ok:["Furniture cleaning in your home (professional, labour part)","Home cleaning"],no:["Car interior cleaning and tyre change","Equipment and ozone generator rental"],
+ workL:"Labour on our invoice",workD:"The labour part is shown separately on the invoice.",otherL:"Other household work this year",otherD:"E.g. cleaning or renovation – the €150 own share is shared by all work.",
+ persL:"Who pays",p1:"One person",p2:"Two spouses",resL:"Total credit",netL:"Our job after the credit",
+ hint0:"No credit yet: the own share is covered once labour exceeds €375 per person per year.",hintOk:"€{x} of this comes from our job.",
+ disc:"Estimate, not tax advice. The Finnish Tax Administration decides. Source: vero.fi, press release 13.10.2026.",kvLink:"Household tax credit – calculate ↓"},
+ru:{kvL:"Налоговый вычет",kvT:"Вычет kotitalousvähennys",kvD:"Если вы заказываете работы по дому у фирмы, государство возвращает 40 % стоимости работы через налоги – в 2026 году до 2 100 € на человека. Собственная доля – 150 € в год, супруги получают вычет каждый отдельно.",
+ okT:"Вычет действует",noT:"Без вычета",ok:["Химчистка мебели у вас дома (профессионал, доля работы)","Уборка дома"],no:["Химчистка салона и замена колёс","Аренда оборудования и озонатора"],
+ workL:"Работа в нашем счёте",workD:"Доля работы указывается в счёте отдельно.",otherL:"Другие работы по дому в этом году",otherD:"Например, уборка или ремонт – доля 150 € общая на все работы.",
+ persL:"Кто платит",p1:"Один человек",p2:"Двое супругов",resL:"Вычет всего",netL:"Наша работа после вычета",
+ hint0:"Вычета пока нет: собственная доля покрывается, когда работа больше 375 € в год на человека.",hintOk:"Из них {x} € – за нашу работу.",
+ disc:"Примерный расчёт, не налоговая консультация. Окончательно решает Verohallinto. Источник: vero.fi, пресс-релиз 13.10.2026.",kvLink:"Вычет kotitalousvähennys – посчитать ↓"}};
+let kvP=1;
+const eu=v=>Math.round(v).toLocaleString(lang==="en"?"en-GB":"fi-FI")+" €";
+function kvCalc(){const L=K[lang],w=Math.max(0,+$("#kvW").value||0),o=Math.max(0,+$("#kvO").value||0),all=w+o,per=all/kvP;
+  const ded=kvP*Math.max(0,Math.min(2100,.4*per-150)),ours=all?ded*w/all:0;
+  $("#kvR").textContent=eu(ded);$("#kvN").textContent=eu(w-ours);$("#kvH").textContent=ded>0?L.hintOk.replace("{x}",Math.round(ours)):L.hint0}
+function renderKV(){const L=K[lang];$$("[data-kv]").forEach(e=>e.textContent=L[e.dataset.kv]);
+  $(".kvok").innerHTML=`<h4>✓ ${L.okT}</h4><ul>${L.ok.map(t=>`<li><span>✓</span>${t}</li>`).join("")}</ul>`;
+  $(".kvno").innerHTML=`<h4>✕ ${L.noT}</h4><ul>${L.no.map(t=>`<li><span>✕</span>${t}</li>`).join("")}</ul>`;
+  $$(".kvp button").forEach(b=>{b.textContent=b.dataset.p==="1"?L.p1:L.p2;b.setAttribute("aria-pressed",+b.dataset.p===kvP)});kvCalc()}
+$("#kvW").addEventListener("input",kvCalc);$("#kvO").addEventListener("input",kvCalc);
+$(".kvp").addEventListener("click",e=>{const b=e.target.closest("button");if(b){kvP=+b.dataset.p;renderKV()}});
+
+/* ================= language from the phone ================= */
+function detectLang(){try{const q=new URLSearchParams(location.search).get("lang");if(T[q])return q}catch(e){}
+  try{const v=localStorage.getItem("kmLang");if(T[v])return v}catch(e){}
+  const l=String((navigator.languages&&navigator.languages[0])||navigator.language||"fi").toLowerCase();
+  if(l.startsWith("fi"))return"fi";if(/^(ru|uk|be)/.test(l))return"ru";return"en"}
+
+/* rotating words */
+function rotor(el,items,ms){clearInterval(el._t);let i=0;el.innerHTML=items.map((t,k)=>`<span class="${k?"":"on"}">${t}</span>`).join("");
+  if(reduced)return;el._t=setInterval(()=>{const sp=el.children,prev=i;sp[prev].className="out";i=(i+1)%sp.length;sp[i].className="on";setTimeout(()=>{if(sp[prev].className==="out")sp[prev].className=""},800)},ms)}
+
+function apply(){const L=T[lang];document.documentElement.lang=lang;
+  $$("[data-i]").forEach(e=>{const v=L[e.dataset.i];if(typeof v==="string")e.textContent=v});
+  $$(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===lang));
+  $("#wa").href=`https://wa.me/${WA}?text=`+encodeURIComponent("KaiMobil: ");
+  rotor($("#cities"),L.cities,2200);rotor($("#slogans"),L.slogans,2800);
+  stages.forEach(st=>{const v=L.svc[st.svc.k],el=st.el;
+    $(".tag",el).textContent=L.cat[st.svc.cat];$(".season",el).textContent=v.season;$("h3",el).textContent=v.t;$(".d",el).textContent=v.d;
+    $(".from",el).textContent=st.svc.lock?"":`${L.from} ${st.svc.from} €`;
+    if(st.svc.lock)$(".lockbig",el).setAttribute("aria-label",L.closedA);$(".desc",el).textContent=v.desc||v.info;
+    $(".opener",el).setAttribute("aria-label",`${L.openA}: ${v.t}`);$(".x",el).setAttribute("aria-label",L.close);
+    if(!st.svc.noBA){$(".vp",el).textContent=L.tabPh;$(".bl1",el).textContent=L.bef;$(".bl2",el).textContent=L.aft;$(".bnote",el).textContent=L.phNote;$(".ba input",el).setAttribute("aria-label",L.tabPh)}
+    const ng=$(".nogl",el);if(ng)ng.textContent=L.nogl;st.lastP=-1;renderCfg(st)});
+  renderKV();
+}
+$(".lang").addEventListener("click",e=>{const b=e.target.closest("button");if(b){lang=b.dataset.l;try{localStorage.setItem("kmLang",lang)}catch(_){}apply()}});
+lang=detectLang();apply();
+{const h=location.hash.slice(1),st=stages.find(o=>SLUG[o.svc.k]===h);if(st&&!st.svc.lock)setTimeout(()=>openTile(st),250)}
+</script>
